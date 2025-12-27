@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הודאות וסתירות | הכנה לדיון - מנורה נ' אבו עוביד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-card: #333333;
+      --bg-card-hover: #3d3d3d;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --text-muted: #6b6b6b;
+      --border-color: #404040;
+      --accent: #d4a574;
+      --accent-light: #e5c4a8;
+      --danger: #e57373;
+      --success: #81c784;
+      --warning: #ffb74d;
+      --info: #64b5f6;
+    }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      direction: rtl;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    .case-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      margin-top: 24px;
+      padding-right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .section-title i {
+      font-size: 1rem;
+    }
+
+    /* ===== CARDS ===== */
+    .evidence-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+      border-right: 3px solid var(--accent);
+    }
+
+    .evidence-card.admission {
+      border-right-color: var(--success);
+    }
+
+    .evidence-card.contradiction {
+      border-right-color: var(--danger);
+    }
+
+    .evidence-card.weak {
+      border-right-color: var(--warning);
+    }
+
+    .card-header {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote {
+      background: var(--bg-secondary);
+      border-right: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-text {
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .quote-source {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: normal;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .badge.admission {
+      background: rgba(129, 199, 132, 0.15);
+      color: var(--success);
+    }
+
+    .badge.contradiction {
+      background: rgba(229, 115, 115, 0.15);
+      color: var(--danger);
+    }
+
+    .badge.weak {
+      background: rgba(255, 183, 77, 0.15);
+      color: var(--warning);
+    }
+
+    .badge.critical {
+      background: rgba(229, 115, 115, 0.15);
+      color: var(--danger);
+    }
+
+    /* ===== CONTENT SECTIONS ===== */
+    .meaning {
+      margin: 12px 0;
+      padding: 10px 12px;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+    }
+
+    .meaning strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.85rem;
+    }
+
+    .meaning p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .question-suggest {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: rgba(212, 165, 116, 0.1);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      border-radius: 6px;
+    }
+
+    .question-suggest strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.85rem;
+    }
+
+    .question-suggest p {
+      color: var(--text-primary);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlight-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-box.danger {
+      background: rgba(229, 115, 115, 0.1);
+      border: 1px solid rgba(229, 115, 115, 0.3);
+    }
+
+    .highlight-box.danger i {
+      color: var(--danger);
+    }
+
+    .highlight-box.info {
+      background: rgba(100, 181, 246, 0.1);
+      border: 1px solid rgba(100, 181, 246, 0.3);
+    }
+
+    .highlight-box.info i {
+      color: var(--info);
+    }
+
+    /* ===== STATS SUMMARY ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ===== BOTTOM NAVIGATION ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 60px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .nav-btn i {
+      font-size: 1.25rem;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:active {
+      color: var(--accent);
+    }
+
+    /* ===== DESKTOP ENHANCEMENTS ===== */
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 1.75rem;
+      }
+
+      .container {
+        padding: 24px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .evidence-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- כותרת עליונה -->
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1>הודאות וסתירות</h1>
+  </header>
+
+  <!-- תוכן ראשי -->
+  <main class="container">
+
+    <!-- סיכום מספרים -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">12</div>
+        <div class="stat-label">הודאות בחוב</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">8</div>
+        <div class="stat-label">הודאות באיחורים</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">6</div>
+        <div class="stat-label">סתירות פנימיות</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">9</div>
+        <div class="stat-label">טענות חלשות</div>
+      </div>
+    </div>
+
+    <div class="highlight-box info">
+      <i class="ti ti-info-circle"></i>
+      <div>
+        <strong>מטרת המסמך:</strong> מיפוי כל המקומות בתצהיר הנתבע שבהם הוא מודה בעובדות או סותר את עצמו. זהו הבסיס לחקירה הנגדית.
+      </div>
+    </div>
+
+    <!-- א. הודאות בקיום החוב -->
+    <div class="section-title">
+      <i class="ti ti-check"></i>
+      א. הודאות בקיום החוב
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        הודאה מפורשת בחיוב
+      </div>
+      <div class="quote">
+        <div class="quote-text">"סילוק חוב הנמוך בהרבה מסכום התביעה... בו חייבת הנתבעת לקופת התובעת"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 1</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הנתבע מודה במפורש שהנתבעת חייבת כספים לתובעת. הוא רק חולק על הסכום, לא על עצם קיום החוב.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"אתה כותב בסעיף 1 של התצהיר שלך שהנתבעת חייבת לתובעת - נכון?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        ניהול קופת פנסיה
+      </div>
+      <div class="quote">
+        <div class="quote-text">"הנני להצהיר כי התובעת עוסקת בהובלות ולפי מיטב ידיעתי ניהלה אצל התובעת קופת פנסיה לעובדים שעבדו או עובדים בשורותיה זאת מאז שנת 2015"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 6</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הנתבע מאשר את ההתקשרות עם התובעת למשך שנים רבות (מ-2015). זו הודאה ביחסים החוזיים.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"מ-2015 ניהלתם קופת פנסיה אצל התובעת - נכון?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        שיקים שחזרו
+      </div>
+      <div class="quote">
+        <div class="quote-text">"חלק מהשקים שנמשכו מבעוד מועד לצדדי ג', בכלל זה, לתובעת חזרו"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.2</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הודאה שהיו שיקים שלא כובדו ושחזרו. זה מאשר בעיות תשלום.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"שיקים שנתתם לתובעת חזרו - נכון?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        פתיחת תיק הוצל"פ
+      </div>
+      <div class="quote">
+        <div class="quote-text">"בגין חלק מהשקים שחזרו ו/או נמסרו לתובעת, פתחה התובעת ביום 6.5.2021 תיק הוצל"פ כנגד הנתבעת... קרן החוב בתיק ההוצל"פ ליום פתיחתו עמדה ע"ס כ-73,340 ₪"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.3</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>מודה שהיה חוב של מעל 73,000 ₪ שהוביל לפתיחת תיק הוצל"פ. זו הודאה בחוב משמעותי.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        בקשה להסדר חוב
+      </div>
+      <div class="quote">
+        <div class="quote-text">"בסמוך לקבלת האזהרה בתיק ההוצל"פ פנתה הנתבעת, באמצעות בא כוחה, אל משרד ב"כ התובעת על מנת להסדיר את החוב"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.4</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הנתבע מודה שפנה להסדיר חוב - משמע, הכיר בקיומו.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        בקשה להסדיר חוב כולל
+      </div>
+      <div class="quote">
+        <div class="quote-text">"הנתבעת ביקשה להסדיר את מלוא החוב בגין השקים שלא כובדו וכן אלה בגינם נפתח תיק ההוצל"פ"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.6</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הודאה שיש "מלוא החוב" - לא רק חוב קטן. הנתבע מכיר בקיום חוב משמעותי.</p>
+      </div>
+    </div>
+
+    <!-- ב. הודאות באיחורים -->
+    <div class="section-title">
+      <i class="ti ti-clock-exclamation"></i>
+      ב. הודאות באיחורים בתשלום
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge critical">קריטית</span>
+        <span class="badge admission">הודאה</span>
+        הודאה מפורשת באי העברת כספים במועד
+      </div>
+      <div class="quote">
+        <div class="quote-text">"ככל ויימצא כי הנתבעת חייבת לשלם סכום כלשהו לתובעת, הרי הדבר נגרם מהתנהגותה הרשלנית של התובעת, ואין לחייב את הנתבעת לשלם ריביות ו/או הצמדות שהן וכי אי העברת הכספים במועד נבעה מטעות כנה"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 5</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>זו הודאה מפורשת: "אי העברת הכספים במועד". הנתבע מודה שלא העביר במועד, גם אם טוען ש"נבעה מטעות כנה". העובדה לא משתנה.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"אתה כותב בסעיף 5 'אי העברת הכספים במועד' - משמע, אתה מודה שלא העברתם כספים במועד - נכון?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        קשיים כלכליים
+      </div>
+      <div class="quote">
+        <div class="quote-text">"בתקופה הקורונה – נקלעה הנתבעת לקשיים כלכליים, שכן חלק ניכר מלקוחותיה נכנסו להליכי פשיטת רגל/חדלות פירעון שבסופו של דבר תזרים המזומנים של הנתבעת נפגע"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.1</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הנתבע מודה שנקלע לקשיים כלכליים ותזרים המזומנים נפגע. זה מסביר מדוע לא שילם, אבל לא פוטר אותו מהחובה לשלם + ריבית.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"בקורונה היו לכם קשיים כלכליים ותזרים נפגע - נכון?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        שיבושים בהפקדות
+      </div>
+      <div class="quote">
+        <div class="quote-text">"השתבשו סדרי העבודה... הייתה תחלופת עובדי הנהלת חשבונות אצל הנתבעת וגם החלפת סוכן ביטוח, דבר שגרם לשיבושים רבים אף בפתיחת קופות חדשות לעובדים חדשים ו/או למעקב אחר הפקדות"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.1</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>מודה ש"שיבושים רבים" בהפקדות. זו הודאה בכשלים מצדו, לא של התובעת.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card admission">
+      <div class="card-header">
+        <span class="badge admission">הודאה</span>
+        הודאה מותנית - עדיין הודאה
+      </div>
+      <div class="quote">
+        <div class="quote-text">"ככל ויתברר כי ישנם סכומים שלא הועברו לתובעת במועד, תטען הנתבעת, כי עניין זה נבע בשל טעות כנה"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 9.4</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>גם אם זו "הודאה מותנית", הוא למעשה מודה שייתכן שלא העביר סכומים במועד.</p>
+      </div>
+    </div>
+
+    <!-- ג. סתירות פנימיות -->
+    <div class="section-title">
+      <i class="ti ti-alert-triangle"></i>
+      ג. סתירות פנימיות בתצהיר הנתבע
+    </div>
+
+    <div class="evidence-card contradiction">
+      <div class="card-header">
+        <span class="badge contradiction">סתירה</span>
+        מצב תיק ההוצל"פ
+      </div>
+      <div class="quote">
+        <div class="quote-text">הנתבע טוען (סעיף 2): "סגרה יתרת חוב בתיק הוצל"פ 504769-05-21"
+        <br><br>
+        אבל התובעת טוענת (סעיף 26): "חוב זה טרם נפרע והתובעת ממשיכה בנקיטת הליכים לגבייתו בהוצל"פ"
+        <br><br>
+        והנתבע עצמו מודה (סעיף 8.17): "הנתבעת סילקה את מלוא החוב בתיק ההוצל"פ"</div>
+        <div class="quote-source">סעיפים 2, 8.17 בתצהיר הנתבע; סעיף 26 בתצהיר התובעת</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>אם הוא סילק - למה טוען שהתובעת פועלת בחוסר תום לב? אם לא סילק - למה כותב שכן? סתירה פנימית.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"סילקת את החוב בתיק ההוצל"פ - כן או לא?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card contradiction">
+      <div class="card-header">
+        <span class="badge contradiction">סתירה</span>
+        האם היה מו"מ או לא?
+      </div>
+      <div class="quote">
+        <div class="quote-text">מצד אחד טוען: "התובעת... לא הביאה כל זכר להתנהלות המו"מ ו/או ההתכתבויות בין הצדדים ו/או הפגישות שהתקיימו" (סעיף 3)
+        <br><br>
+        מצד שני מתאר: "התנהלו שיחות טלפוניות ופניות שונות" (7.6), "התקיימה פגישה במשרדי התובעת" (8.7), "סוכם שלא יימשכו הליכים" (7.6)
+        <br><br>
+        אז יש מו"מ או אין מו"מ?</div>
+        <div class="quote-source">תצהיר הנתבע, סעיפים 3, 7.6, 8.7</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>לא יכול להיות ששני הדברים נכונים. הוא מתאר מו"מ נרחב אבל טוען שהתובעת הסתירה את קיומו.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card contradiction">
+      <div class="card-header">
+        <span class="badge contradiction">סתירה</span>
+        מי לא שיתף פעולה?
+      </div>
+      <div class="quote">
+        <div class="quote-text">הנתבע טוען: "הנתבעת לא שיתפה פעולה בהמצאת מלוא המסמכים הנדרשים" (סעיף 28 בתצהיר התובעת שהנתבע מתייחס אליו)
+        <br><br>
+        אבל גם טוען: התובעת "לא עשתה די ובחרה להפעיל על הנתבעת לחצים בלתי הוגנים" (סעיף 5)
+        <br><br>
+        אז מי לא שיתף פעולה - הוא או התובעת?</div>
+        <div class="quote-source">תצהיר הנתבע, סעיפים 5 ואחרים</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>הנתבע מודה בפועל שלא שיתף פעולה במסירת מסמכים, אבל מאשים את התובעת.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card contradiction">
+      <div class="card-header">
+        <span class="badge contradiction">סתירה</span>
+        שכר טרחה - אמתלה או סיבה אמיתית?
+      </div>
+      <div class="quote">
+        <div class="quote-text">הנתבע טוען שסרב להסדר בגלל שכ"ט של 60,000-100,000 ₪ (סעיף 8.8)
+        <br><br>
+        אבל: החוב קיים מ-2019, המחלוקת על שכ"ט עלתה רק ב-2023 (בפגישה 14.6.23)
+        <br><br>
+        4 שנים לא שילם - לפני שבכלל דיברו על שכ"ט!
+        <br><br>
+        וגם אחרי שהפחיתו ל-40,000 ₪ + פריסה - עדיין לא שילם!</div>
+        <div class="quote-source">תצהיר הנתבע, סעיפים 8.7, 8.8</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>שכר הטרחה לא יכול להיות הסיבה לאי תשלום כשהחוב קדם לו בשנים. זו אמתלה, לא סיבה אמיתית.</p>
+      </div>
+    </div>
+
+    <!-- ד. טענות ללא ביסוס ראייתי -->
+    <div class="section-title">
+      <i class="ti ti-file-x"></i>
+      ד. טענות ללא ביסוס ראייתי
+    </div>
+
+    <div class="evidence-card weak">
+      <div class="card-header">
+        <span class="badge weak">חלשה</span>
+        מניעים פסולים - ללא הוכחה
+      </div>
+      <div class="quote">
+        <div class="quote-text">"התביעה הוגשה ממניעים פסולים לזכות בשכ"ט ו/או בכספים שאינם מגיעים לתובעת"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 1</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>טענה כללית ללא כל ביסוס. לא מציג ראיות ל"מניעים פסולים". גם אם שכ"ט היה נושא במחלוקת - זה לא "מניע פסול".</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"אתה טוען 'מניעים פסולים' - איזו ראיה יש לך לכך?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card weak">
+      <div class="card-header">
+        <span class="badge weak">חלשה</span>
+        סכומים מוטעים - ללא חישוב חלופי
+      </div>
+      <div class="quote">
+        <div class="quote-text">"הסכומים הנתבעים והמוכחשים במלואם, חסרי כל בסיס, מוטעים, מופרזים, דרכי חישובם מוטעית"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 9.3</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>טוען "מוטעים" אבל לא מציג חישוב חלופי. לא מפרט איזה סכום הוא כן מכיר בו. טענה כללית ללא תוכן.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"אתה טוען שהסכומים מוטעים - אז מה הסכום הנכון לדעתך?"</p>
+      </div>
+    </div>
+
+    <div class="evidence-card weak">
+      <div class="card-header">
+        <span class="badge weak">חלשה</span>
+        אשם תורם - ללא פירוט
+      </div>
+      <div class="quote">
+        <div class="quote-text">"לתובעת אשם תורם ביצירת הפיגורים"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 15.2</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>טוען "אשם תורם" אבל לא מפרט במה בדיוק. אם התובעת לא ערכה חישוב - הוא יכול היה לשלם את מה שהוא כן יודע שחייב.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card weak">
+      <div class="card-header">
+        <span class="badge weak">חלשה</span>
+        קיזוז - ללא פירוט
+      </div>
+      <div class="quote">
+        <div class="quote-text">"מכל סכום שהנתבעת תחויב בו... יש לקזז מסכום זה, תשלומים שהנתבעת שילמה לתובעת ולא נוכו ו/או קוזזו"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 9.8</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>טענת קיזוז כללית ללא פירוט: אילו תשלומים? מתי? כמה? התובעת כבר ענתה שכל התשלומים קוזזו לתקופה קודמת.</p>
+      </div>
+    </div>
+
+    <div class="evidence-card weak">
+      <div class="card-header">
+        <span class="badge weak">חלשה</span>
+        טעות כנה - חוזר על זה כל הזמן
+      </div>
+      <div class="quote">
+        <div class="quote-text">"נבעה מטעות כנה" (סעיף 5) / "בשל טעות כנה" (סעיף 9.4) / "מטעות כנה" (סעיף 9.6)</div>
+        <div class="quote-source">תצהיר הנתבע, סעיפים 5, 9.4, 9.6</div>
+      </div>
+      <div class="meaning">
+        <strong>משמעות:</strong>
+        <p>"טעות כנה" זו לא הגנה משפטית. גם אם טעות - חייבים לשלם + ריבית. חוזר על זה 3 פעמים כאילו זה משנה משהו.</p>
+      </div>
+      <div class="question-suggest">
+        <strong>שימוש בחקירה:</strong>
+        <p>"גם אם זו הייתה טעות כנה - אתה מסכים שעדיין צריך לשלם את החוב - נכון?"</p>
+      </div>
+    </div>
+
+    <!-- סיכום -->
+    <div class="highlight-box danger">
+      <i class="ti ti-target"></i>
+      <div>
+        <strong>המסר העיקרי לחקירה:</strong>
+        <p>הנתבע מודה בעובדות המרכזיות (חוב, איחורים, קשיים), אבל מנסה להאשים את התובעת. השתמש בהודאות שלו נגדו בחקירה הנגדית.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ניווט תחתון -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="timeline.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="cross-exam.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
