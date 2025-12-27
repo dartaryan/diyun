@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תרחישים ותגובות | הכנה לדיון - מנורה נ' אבו עוביד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-card: #333333;
+      --bg-card-hover: #3d3d3d;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --text-muted: #6b6b6b;
+      --border-color: #404040;
+      --accent: #d4a574;
+      --accent-light: #e5c4a8;
+      --danger: #e57373;
+      --success: #81c784;
+      --warning: #ffb74d;
+      --info: #64b5f6;
+    }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      direction: rtl;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    .case-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== INTRO BOX ===== */
+    .intro-box {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+      border-right: 3px solid var(--info);
+    }
+
+    .intro-box p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      margin-top: 24px;
+      padding-right: 4px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* ===== EXPANDABLE SECTIONS ===== */
+    details {
+      background: var(--bg-card);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    summary {
+      padding: 14px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-primary);
+      gap: 12px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center no-repeat;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    details > div {
+      padding: 0 16px 16px;
+      color: var(--text-secondary);
+    }
+
+    .summary-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .scenario-icon {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+
+    .scenario-title {
+      flex: 1;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge.high {
+      background: rgba(229, 115, 115, 0.15);
+      color: var(--danger);
+    }
+
+    .badge.medium {
+      background: rgba(255, 183, 77, 0.15);
+      color: var(--warning);
+    }
+
+    .badge.low {
+      background: rgba(129, 199, 132, 0.15);
+      color: var(--success);
+    }
+
+    .badge.our-initiative {
+      background: rgba(100, 181, 246, 0.15);
+      color: var(--info);
+    }
+
+    /* ===== SCENARIO CONTENT ===== */
+    .scenario-section {
+      margin-bottom: 16px;
+    }
+
+    .scenario-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .scenario-section-title {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scenario-section-title i {
+      font-size: 0.9rem;
+    }
+
+    .scenario-section ul {
+      padding-right: 20px;
+      margin: 0;
+    }
+
+    .scenario-section li {
+      margin-bottom: 4px;
+    }
+
+    /* ===== RED LINE BOX ===== */
+    .red-line-box {
+      background: rgba(229, 115, 115, 0.1);
+      border: 1px solid rgba(229, 115, 115, 0.3);
+      border-radius: 6px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .red-line-box i {
+      color: var(--danger);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .red-line-box span {
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+
+    /* ===== GREEN BOX ===== */
+    .green-box {
+      background: rgba(129, 199, 132, 0.1);
+      border: 1px solid rgba(129, 199, 132, 0.3);
+      border-radius: 6px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .green-box i {
+      color: var(--success);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .green-box span {
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+
+    /* ===== NOTES BOX ===== */
+    .notes-box {
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .notes-box strong {
+      color: var(--text-primary);
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlight-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-box.warning {
+      background: rgba(255, 183, 77, 0.1);
+      border: 1px solid rgba(255, 183, 77, 0.3);
+    }
+    .highlight-box.warning i { color: var(--warning); }
+
+    .highlight-box.info {
+      background: rgba(100, 181, 246, 0.1);
+      border: 1px solid rgba(100, 181, 246, 0.3);
+    }
+    .highlight-box.info i { color: var(--info); }
+
+    .highlight-box.success {
+      background: rgba(129, 199, 132, 0.1);
+      border: 1px solid rgba(129, 199, 132, 0.3);
+    }
+    .highlight-box.success i { color: var(--success); }
+
+    /* ===== AMOUNTS ===== */
+    .amount {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    /* ===== BOTTOM NAVIGATION ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 60px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .nav-btn i {
+      font-size: 1.25rem;
+    }
+
+    .nav-btn:hover, .nav-btn:active {
+      color: var(--accent);
+    }
+
+    /* ===== DESKTOP ENHANCEMENTS ===== */
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 1.75rem;
+      }
+      
+      .container {
+        padding: 24px;
+      }
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .header, .bottom-nav {
+        display: none;
+      }
+      
+      body {
+        padding: 0;
+        background: white;
+        color: black;
+      }
+      
+      details {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+      }
+
+      details[open] {
+        break-inside: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1>תרחישים ותגובות</h1>
+  </header>
+
+  <main class="container">
+    <div class="intro-box">
+      <p><i class="ti ti-info-circle"></i> מסמך זה מכין אותך לתרחישים אפשריים בדיון ההוכחות. לכל תרחיש מוגדרת רמת סבירות, תגובה מומלצת וקו אדום.</p>
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-alert-triangle"></i>
+      <div>
+        <strong>תזכורת חשובה:</strong> לבקש הוצאות בסוף הדיון - דחיות דיונים, הגעה מת"א, סחבת בהליך.
+      </div>
+    </div>
+
+    <!-- תרחיש 1: הסדר -->
+    <p class="section-title">תרחישים צפויים</p>
+
+    <details>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-handshake scenario-icon"></i>
+          <span class="scenario-title">הנתבע מציע הסדר באמצע הדיון</span>
+          <span class="badge medium">סבירות בינונית</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-bulb"></i>
+            תגובה מומלצת
+          </div>
+          <ul>
+            <li>לבקש הפסקה קצרה להתייעצות עם הלקוח (מנורה)</li>
+            <li>לדרוש תשלום מיידי של לפחות 50% מהסכום</li>
+            <li>לדרוש לוח תשלומים קצר (עד 3 חודשים) על היתרה</li>
+            <li><strong>לא לוותר על הוצאות משפט!</strong></li>
+            <li>לדרוש שכ"ט כחלק בלתי נפרד מההסדר</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="red-line-box">
+            <i class="ti ti-alert-octagon"></i>
+            <span><strong>קו אדום:</strong> לא מתחת ל-<span class="amount">480,000 ₪</span> (כולל קרן + ריבית + הוצאות). שכ"ט לפחות <span class="amount">40,000 ₪</span>.</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>שיקולים:</strong> הנתבע כבר הציע הסדרים בעבר ולא עמד בהם. יש לדרוש ביטחונות (שיקים, ערבות אישית) לכל הסדר.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- תרחיש 2: טעויות בחישוב -->
+    <details>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-calculator scenario-icon"></i>
+          <span class="scenario-title">הנתבע טוען טעויות בחישוב</span>
+          <span class="badge high">סבירות גבוהה</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-bulb"></i>
+            תגובה מומלצת
+          </div>
+          <ul>
+            <li>להפנות לכרטסת חו"ז (נספח 2 לתצהיר התובעת)</li>
+            <li>להפנות לתחשיב ריבית מפורט (נספח 3)</li>
+            <li>להדגיש: <strong>"המערכת הממוחשבת מהימנה"</strong> (סעיף 21-22 תצהיר תובעת)</li>
+            <li>לשאול: "איזה סכום ספציפי שגוי לטענתך? הראה לי."</li>
+            <li>להדגיש שהנתבע לא העביר פירוט נגדי מסודר</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="red-line-box">
+            <i class="ti ti-alert-octagon"></i>
+            <span><strong>קו אדום:</strong> לא להסכים להפחתה ללא ראיות מסודרות מצד הנתבע. טענות כלליות אינן מספיקות.</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>טיעון:</strong> הנתבע מודה בסעיף 9.4 שייתכן שיש סכומים שלא הועברו במועד - זו הודאה. אם יש לו טענות ספציפיות, היה צריך להעלות אותן קודם ולהגיש חוות דעת חשבונאית.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- תרחיש 3: מסמכים נוספים -->
+    <details>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-file-plus scenario-icon"></i>
+          <span class="scenario-title">בקשה להגיש מסמכים נוספים</span>
+          <span class="badge medium">סבירות בינונית</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-bulb"></i>
+            תגובה מומלצת
+          </div>
+          <ul>
+            <li><strong>להתנגד בתוקף!</strong></li>
+            <li>להדגיש: הנתבע הפר הסדר דיוני (סעיף 29 תצהיר תובעת)</li>
+            <li>להדגיש: היה לו זמן רב להגיש מסמכים - לא עשה</li>
+            <li>לטעון: "אין להפתיע בשלב זה, הצדדים החליפו תצהירים"</li>
+            <li>אם השופט נוטה לקבל: לבקש עיון במסמכים לפני קבלתם + זכות תגובה</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="red-line-box">
+            <i class="ti ti-alert-octagon"></i>
+            <span><strong>קו אדום:</strong> לא לקבל מסמכים שלא גולו בגילוי מסמכים או שסותרים את התצהיר.</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>אם מתקבלים:</strong> לבקש דחייה קצרה לעיין בהם + שמירת זכות להגיש תגובה + לבקש הוצאות על ההפתעה.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- תרחיש 4: פשרה מהשופט -->
+    <details>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-gavel scenario-icon"></i>
+          <span class="scenario-title">השופט מציע פשרה</span>
+          <span class="badge high">סבירות גבוהה</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-bulb"></i>
+            תגובה מומלצת
+          </div>
+          <ul>
+            <li>להקשיב בכבוד להצעת השופט</li>
+            <li>לבקש זמן להתייעץ עם הלקוח (מנורה)</li>
+            <li>להבהיר שמנורה חייבת לגבות ריבית פיגורים - <strong>אין שיקול דעת</strong> (תקנה 11)</li>
+            <li>להציע: פשרה על שכ"ט/הוצאות, אבל <strong>לא על הקרן והריבית</strong></li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="green-box">
+            <i class="ti ti-check"></i>
+            <span><strong>טווח מקובל:</strong> קרן מלאה (<span class="amount">408,000 ₪</span>) + ריבית מלאה (<span class="amount">159,000 ₪</span>) + הוצאות מופחתות.</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="red-line-box">
+            <i class="ti ti-alert-octagon"></i>
+            <span><strong>קו אדום:</strong> לא לוותר על הריבית - זו חובה חוקית. מינימום: <span class="amount">520,000 ₪</span> (כולל הכל).</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>טיעון:</strong> "כבוד בית הדין, מרשתי מחויבת על פי דין לגבות ריבית פיגורים. ויתור עליה יחשוף אותה לעיצומים כספיים מרשות שוק ההון" (סעיף 32 תצהיר תובעת).
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- תרחיש 5: נזקי עיקולים -->
+    <details>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-lock scenario-icon"></i>
+          <span class="scenario-title">הנתבע טוען נזקי עיקולים</span>
+          <span class="badge low">סבירות נמוכה</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-bulb"></i>
+            תגובה מומלצת
+          </div>
+          <ul>
+            <li>להדגיש: <strong>הנתבע הוא שגרם לעיקולים</strong> - לא שילם חובותיו</li>
+            <li>"אם היה משלם במועד - לא היו עיקולים"</li>
+            <li>להפנות להודאות הנתבע בקשיים (סעיף 7.1 תצהירו)</li>
+            <li>לדרוש: "איפה הראיות לנזק? חוות דעת רואה חשבון?"</li>
+            <li>להדגיש: זו לא תביעה נגדית - לא הוגשה כראוי</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="red-line-box">
+            <i class="ti ti-alert-octagon"></i>
+            <span><strong>קו אדום:</strong> לא להכיר בשום נזק ללא ראיות. הנתבע לא הגיש תביעה נגדית ולא צירף חוות דעת.</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>טיעון משפטי:</strong> עיקולים הם הליך גבייה לגיטימי. הנתבע יכול היה למנוע אותם על ידי תשלום חובו. ה"נזק" הוא תוצאה ישירה של מחדליו.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- תרחיש 6: תצהירי ויתור -->
+    <details>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-file-check scenario-icon"></i>
+          <span class="scenario-title">בקשה לצרף תצהירי ויתור נוספים</span>
+          <span class="badge medium">סבירות בינונית</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-bulb"></i>
+            תגובה מומלצת
+          </div>
+          <ul>
+            <li><strong>לא להתנגד באופן גורף</strong> - זה משרת גם אותנו (מקטין חוב)</li>
+            <li>לדרוש: צירוף בהליך מסודר, לא "על הדרך"</li>
+            <li>לבקש זמן לבדוק את התצהירים מול הכרטסת</li>
+            <li>לדרוש: אישור שהתצהירים תקינים מבחינה פורמלית</li>
+            <li>להבהיר: זה לא פוטר מתשלום יתרת החוב!</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="green-box">
+            <i class="ti ti-check"></i>
+            <span><strong>תנאים לקבלה:</strong> התצהירים חתומים כדין, העובדים מזוהים במערכת, הסכומים תואמים לכרטסת.</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>הערה:</strong> כבר התקבלו 8 תצהירי ויתור והחוב הופחת בהתאם. התובעת פועלת בתום לב ומקבלת תצהירים תקינים.
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- תרחיש 7: בקשת הוצאות -->
+    <p class="section-title">יוזמה שלנו</p>
+
+    <details open>
+      <summary>
+        <div class="summary-content">
+          <i class="ti ti-currency-shekel scenario-icon"></i>
+          <span class="scenario-title">בקשה להוצאות משפט</span>
+          <span class="badge our-initiative">יוזמה שלנו</span>
+        </div>
+      </summary>
+      <div>
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-clock"></i>
+            מתי לבקש
+          </div>
+          <ul>
+            <li><strong>בסוף הדיון</strong> - לפני שהשופט סוגר</li>
+            <li>אם ניתן פסק דין - לבקש כחלק ממנו</li>
+            <li>אם נדחה לסיכומים - לכלול בסיכומים</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="scenario-section-title">
+            <i class="ti ti-list-check"></i>
+            נימוקים להעלאה
+          </div>
+          <ul>
+            <li><strong>דחיות דיונים חוזרות</strong> - הנתבע דחה מספר פעמים</li>
+            <li><strong>דיון לא מתקיים כסדרו</strong> - סחבת לאורך ההליך</li>
+            <li><strong>הגעה מתל אביב</strong> - עו"ד עומרי + העדה רעיה מרגוליס</li>
+            <li><strong>הפרת הסדר דיוני</strong> - הנתבע לא העביר מסמכים כנדרש</li>
+            <li><strong>טענות סרק</strong> - טענת שכ"ט שמנעה הסדר היא אמתלה</li>
+          </ul>
+        </div>
+
+        <div class="scenario-section">
+          <div class="green-box">
+            <i class="ti ti-target"></i>
+            <span><strong>סכום מומלץ לבקש:</strong> <span class="amount">15,000-25,000 ₪</span> + מע"מ (בנוסף לשכ"ט שבהסדר)</span>
+          </div>
+        </div>
+
+        <div class="scenario-section">
+          <div class="notes-box">
+            <strong>ניסוח מומלץ:</strong> "כבוד בית הדין, אבקש לחייב את הנתבעת בהוצאות משפט ריאליות לאור דחיות הדיונים החוזרות, התנהלות הסחבת, והעובדה שמרשתי ואני נאלצנו להגיע מתל אביב לירושלים מספר פעמים."
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- סיכום -->
+    <div class="highlight-box success" style="margin-top: 24px;">
+      <i class="ti ti-shield-check"></i>
+      <div>
+        <strong>זכור:</strong> אנחנו בעמדה חזקה. הנתבע מודה בחוב (סעיף 1), מודה באיחורים (סעיף 5), וטענת שכ"ט היא אמתלה. להישאר יציבים ולא לוותר מעבר לנדרש.
+      </div>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="one-pager.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
+
