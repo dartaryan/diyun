@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>נקודות מפתח | הכנה לדיון</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-card: #333333;
+      --bg-card-hover: #3d3d3d;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --text-muted: #6b6b6b;
+      --border-color: #404040;
+      --accent: #d4a574;
+      --accent-light: #e5c4a8;
+      --danger: #e57373;
+      --success: #81c784;
+      --warning: #ffb74d;
+      --info: #64b5f6;
+    }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      direction: rtl;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    .case-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .card-header {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-header i {
+      color: var(--text-muted);
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      margin-top: 24px;
+      padding-right: 4px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote {
+      background: var(--bg-secondary);
+      border-right: 3px solid var(--accent);
+      padding: 10px 14px;
+      margin: 10px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-text {
+      font-style: italic;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .quote-source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-style: normal;
+    }
+
+    /* ===== HIGHLIGHT BOXES ===== */
+    .highlight-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlight-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-box.success {
+      background: rgba(129, 199, 132, 0.1);
+      border: 1px solid rgba(129, 199, 132, 0.3);
+    }
+    .highlight-box.success i { color: var(--success); }
+
+    .highlight-box.warning {
+      background: rgba(255, 183, 77, 0.1);
+      border: 1px solid rgba(255, 183, 77, 0.3);
+    }
+    .highlight-box.warning i { color: var(--warning); }
+
+    .highlight-box.danger {
+      background: rgba(229, 115, 115, 0.1);
+      border: 1px solid rgba(229, 115, 115, 0.3);
+    }
+    .highlight-box.danger i { color: var(--danger); }
+
+    .highlight-box.info {
+      background: rgba(100, 181, 246, 0.1);
+      border: 1px solid rgba(100, 181, 246, 0.3);
+    }
+    .highlight-box.info i { color: var(--info); }
+
+    /* ===== KEY NUMBERS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* ===== INFO ROWS ===== */
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.9rem;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      color: var(--text-muted);
+    }
+
+    .info-value {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* ===== KEY POINT CARD ===== */
+    .key-point {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 14px;
+      margin-bottom: 10px;
+      border-right: 3px solid var(--accent);
+    }
+
+    .key-point-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .key-point-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .key-point-ref {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ===== BOTTOM NAVIGATION ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 60px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .nav-btn i {
+      font-size: 1.25rem;
+    }
+
+    .nav-btn:hover, .nav-btn:active {
+      color: var(--accent);
+    }
+
+    /* ===== DESKTOP ENHANCEMENTS ===== */
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 1.75rem;
+      }
+      
+      .container {
+        padding: 24px;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      .header, .bottom-nav {
+        display: none;
+      }
+      
+      body {
+        padding: 0;
+        background: white;
+        color: black;
+      }
+      
+      .card, .key-point {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- כותרת עליונה -->
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1>נקודות מפתח לדיון</h1>
+  </header>
+
+  <!-- תוכן ראשי -->
+  <main class="container">
+
+    <!-- פרטים חיוניים -->
+    <div class="card">
+      <div class="card-header">
+        <i class="ti ti-info-circle"></i>
+        פרטי תיק מהירים
+      </div>
+      <div class="info-row">
+        <span class="info-label">בית הדין</span>
+        <span class="info-value">עבודה ירושלים</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">עדת התובעת</span>
+        <span class="info-value">רעיה מרגוליס</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">עד הנתבעת</span>
+        <span class="info-value">מחמוד אבו עוביד</span>
+      </div>
+    </div>
+
+    <!-- סכומים -->
+    <div class="section-title">סכומי התביעה</div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">408K</div>
+        <div class="stat-label">חוב נומינלי</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">159K</div>
+        <div class="stat-label">ריבית פיגורים</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">~567K</div>
+        <div class="stat-label">סה"כ תביעה</div>
+      </div>
+    </div>
+
+    <div class="highlight-box info">
+      <i class="ti ti-info-circle"></i>
+      <div>
+        <strong>חשוב:</strong> החוב הנומינלי ירד מ-473,994 ₪ ל-408,000 ₪ לאחר קליטת 8 תצהירי ויתור מעובדים
+      </div>
+    </div>
+
+    <!-- נקודות מפתח -->
+    <div class="section-title">7 נקודות מפתח</div>
+
+    <div class="key-point">
+      <div class="key-point-title">1. הנתבע מודה בקיום חוב</div>
+      <div class="key-point-text">
+        "סילוק חוב הנמוך בהרבה מסכום התביעה... בו חייבת הנתבעת"
+      </div>
+      <div class="key-point-ref">תצהיר הנתבע, סעיף 1</div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-title">2. הנתבע מודה באיחורים</div>
+      <div class="key-point-text">
+        "אי העברת הכספים במועד נבעה מטעות כנה" - הודאה מפורשת שלא העביר במועד
+      </div>
+      <div class="key-point-ref">תצהיר הנתבע, סעיף 5</div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-title">3. ריבית פיגורים - חובה חוקית</div>
+      <div class="key-point-text">
+        לתובעת אין שיקול דעת - חייבת לגבות ריבית פיגורים. אם לא תגבה - חשופה לעיצומים כספיים מרשות שוק ההון
+      </div>
+      <div class="key-point-ref">תצהיר התובעת, סעיפים 19, 32-33</div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-title">4. טענת שכ"ט היא אמתלה</div>
+      <div class="key-point-text">
+        החוב קיים מ-2019, מחלוקת שכ"ט עלתה רק ב-2023. גם אחרי הפחתה ל-40,000 ₪ - עדיין לא משלם
+      </div>
+      <div class="key-point-ref">תצהיר הנתבע, סעיף 8.8</div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-title">5. התובעת קיזזה תשלומים</div>
+      <div class="key-point-text">
+        כל התשלומים בתיק ההוצל"פ קוזזו מחוב תקופה קודמת (6/2018-3/2018). לא נוגעים לתקופת החוב נשוא התביעה
+      </div>
+      <div class="key-point-ref">תצהיר התובעת, סעיפים 26-27</div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-title">6. הנתבע הפר הסדר דיוני</div>
+      <div class="key-point-text">
+        התחייב להעביר מסמכים ותצהירי ויתור - העביר רק 8 מתוך עשרות עובדים. שאר המסמכים לא הומצאו
+      </div>
+      <div class="key-point-ref">תצהיר התובעת, סעיף 29</div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-title">7. איחורים מתועדים וחוזרים</div>
+      <div class="key-point-text">
+        איחורים של חודשים רבים: חודש עבודה 11/2016 שולם רק ב-20.06.2017 (7 חודשים!). דפוס עקבי של אי-תשלום
+      </div>
+      <div class="key-point-ref">תצהיר התובעת, סעיף 12</div>
+    </div>
+
+    <!-- הודאות קריטיות -->
+    <div class="section-title">הודאות קריטיות לשימוש</div>
+
+    <div class="quote">
+      <div class="quote-text">
+        "בו חייבת הנתבעת לקופת התובעת"
+      </div>
+      <div class="quote-source">תצהיר הנתבע, סעיף 1 - הודאה בחוב</div>
+    </div>
+
+    <div class="quote">
+      <div class="quote-text">
+        "אי העברת הכספים במועד נבעה מטעות כנה"
+      </div>
+      <div class="quote-source">תצהיר הנתבע, סעיף 5 - הודאה באיחור</div>
+    </div>
+
+    <div class="quote">
+      <div class="quote-text">
+        "נקלעה הנתבעת לקשיים כלכליים... תזרים המזומנים נפגע"
+      </div>
+      <div class="quote-source">תצהיר הנתבע, סעיף 7.1 - הסבר לאי-תשלום</div>
+    </div>
+
+    <div class="quote">
+      <div class="quote-text">
+        "ככל ויתברר כי ישנם סכומים שלא הועברו לתובעת במועד"
+      </div>
+      <div class="quote-source">תצהיר הנתבע, סעיף 9.4 - הודאה בתנאי</div>
+    </div>
+
+    <!-- בקשה להוצאות -->
+    <div class="section-title">בקשה להוצאות - חשוב!</div>
+
+    <div class="highlight-box danger">
+      <i class="ti ti-alert-triangle"></i>
+      <div>
+        <strong>לבקש הוצאות משמעותיות מהנתבע:</strong>
+        <ul style="margin-top: 8px; margin-right: 20px; font-size: 0.9rem; line-height: 1.6;">
+          <li>דחיות דיונים חוזרות ונשנות מצד הנתבעת</li>
+          <li>דיון הוכחות לא מתקיים כסדרו בגלל התנהלות הנתבעת</li>
+          <li>עו"ד עומרי והעדה הגיעו מתל אביב במיוחד</li>
+          <li>התנהלות של סחבת לאורך כל ההליך</li>
+          <li>הפרת הסדר דיוני - לא הומצאו מסמכים כנדרש</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- תזכורות משפטיות -->
+    <div class="section-title">תזכורות משפטיות</div>
+
+    <div class="card">
+      <div class="card-header">
+        <i class="ti ti-book"></i>
+        בסיס חוקי
+      </div>
+      <div style="font-size: 0.85rem; line-height: 1.6;">
+        <p style="margin-bottom: 8px;">
+          <strong>תקנה 10 לתקנות קופות הגמל:</strong> מועד העברת תשלומי הפרשות דמי גמולים
+        </p>
+        <p style="margin-bottom: 8px;">
+          <strong>תקנה 11 לתקנות קופות הגמל:</strong> חובה לגבות ריבית פיגורים - אין שיקול דעת
+        </p>
+        <p style="margin-bottom: 8px;">
+          <strong>חוזר גמל 4/2000:</strong> חלוקת כספי ריבית פיגורים לעמיתים
+        </p>
+        <p>
+          <strong>תקנה 11:</strong> ריבית דריבית - ריבית פיגורים נצברת גם על הריבית עצמה
+        </p>
+      </div>
+    </div>
+
+    <!-- סיכום אסטרטגי -->
+    <div class="section-title">אסטרטגיית הדיון</div>
+
+    <div class="highlight-box success">
+      <i class="ti ti-target"></i>
+      <div>
+        <strong>מטרה:</strong> לחלץ הודאות מפורשות בחקירה נגדית. התמקד בסעיפים 1, 5, 7.1, 9.4 מתצהיר הנתבע - הוא כבר מודה שם!
+      </div>
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-alert-circle"></i>
+      <div>
+        <strong>זהירות:</strong> הנתבע ינסה להסיט לשכ"ט ולטענת המו"מ. החזיר אותו למהות - החוב קיים ולא שולם במועד
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ניווט תחתון קבוע -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="fee-analysis.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="scenarios.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
