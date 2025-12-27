@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ניתוח שכר טרחה | הכנה לדיון - מנורה נ' אבו עוביד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-card: #333333;
+      --bg-card-hover: #3d3d3d;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --text-muted: #6b6b6b;
+      --border-color: #404040;
+      --accent: #d4a574;
+      --accent-light: #e5c4a8;
+      --danger: #e57373;
+      --success: #81c784;
+      --warning: #ffb74d;
+      --info: #64b5f6;
+    }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      direction: rtl;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    .case-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      margin-top: 24px;
+      padding-right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .section-title i {
+      font-size: 1rem;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .card-header {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-header i {
+      color: var(--text-muted);
+    }
+
+    /* ===== QUOTE BOX ===== */
+    .quote {
+      background: var(--bg-secondary);
+      border-right: 3px solid var(--accent);
+      padding: 12px 16px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .quote-text {
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .quote-source {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: normal;
+    }
+
+    /* ===== BADGES ===== */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .badge.critical {
+      background: rgba(229, 115, 115, 0.15);
+      color: var(--danger);
+    }
+
+    .badge.important {
+      background: rgba(212, 165, 116, 0.15);
+      color: var(--accent);
+    }
+
+    .badge.weak {
+      background: rgba(255, 183, 77, 0.15);
+      color: var(--warning);
+    }
+
+    .badge.success {
+      background: rgba(129, 199, 132, 0.15);
+      color: var(--success);
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlight-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-box.danger {
+      background: rgba(229, 115, 115, 0.1);
+      border: 1px solid rgba(229, 115, 115, 0.3);
+    }
+
+    .highlight-box.danger i {
+      color: var(--danger);
+    }
+
+    .highlight-box.warning {
+      background: rgba(255, 183, 77, 0.1);
+      border: 1px solid rgba(255, 183, 77, 0.3);
+    }
+
+    .highlight-box.warning i {
+      color: var(--warning);
+    }
+
+    .highlight-box.success {
+      background: rgba(129, 199, 132, 0.1);
+      border: 1px solid rgba(129, 199, 132, 0.3);
+    }
+
+    .highlight-box.success i {
+      color: var(--success);
+    }
+
+    .highlight-box.info {
+      background: rgba(100, 181, 246, 0.1);
+      border: 1px solid rgba(100, 181, 246, 0.3);
+    }
+
+    .highlight-box.info i {
+      color: var(--info);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      position: relative;
+      padding-right: 20px;
+      margin: 16px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      right: 6px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-color);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 16px;
+      padding-right: 24px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg-primary);
+    }
+
+    .timeline-item.highlight::before {
+      background: var(--danger);
+      box-shadow: 0 0 0 4px rgba(229, 115, 115, 0.2);
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-content {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ===== ARGUMENT BOX ===== */
+    .argument-box {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+      border-right: 3px solid var(--success);
+    }
+
+    .argument-box .title {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .argument-box .content {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* ===== QUESTION CARD ===== */
+    .question-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+      border-right: 3px solid var(--accent);
+    }
+
+    .question-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .question-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: var(--bg-primary);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-weight: 600;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .question-text {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .question-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+
+    .question-meta p {
+      margin-bottom: 6px;
+    }
+
+    .question-meta p:last-child {
+      margin-bottom: 0;
+    }
+
+    .question-meta strong {
+      color: var(--text-primary);
+    }
+
+    /* ===== SUMMARY BOX ===== */
+    .summary-box {
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+      border: 1px solid var(--border-color);
+    }
+
+    .summary-box h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .summary-box p {
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .summary-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===== COMPARISON BOX ===== */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .comparison-item {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 14px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .comparison-item.before {
+      border-top: 3px solid var(--warning);
+    }
+
+    .comparison-item.after {
+      border-top: 3px solid var(--success);
+    }
+
+    .comparison-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .comparison-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .comparison-note {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 6px;
+    }
+
+    /* ===== BOTTOM NAVIGATION ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 60px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .nav-btn i {
+      font-size: 1.25rem;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:active {
+      color: var(--accent);
+    }
+
+    /* ===== DESKTOP ENHANCEMENTS ===== */
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 1.75rem;
+      }
+
+      .container {
+        padding: 24px;
+      }
+
+      .card,
+      .question-card,
+      .argument-box {
+        padding: 20px;
+      }
+
+      .comparison {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- כותרת עליונה -->
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1>ניתוח שכר טרחה</h1>
+  </header>
+
+  <!-- תוכן ראשי -->
+  <main class="container">
+
+    <div class="highlight-box danger">
+      <i class="ti ti-target"></i>
+      <div>
+        <strong>מטרת המסמך:</strong> להפריך את טענת הנתבע ששכר הטרחה הוא שמנע הסדר. זו טענת סרק - החוב קיים שנים לפני שהנושא בכלל עלה!
+      </div>
+    </div>
+
+    <!-- א. טענת הנתבע -->
+    <div class="section-title">
+      <i class="ti ti-quote"></i>
+      א. טענת הנתבע בנושא שכר טרחה
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge important">טענה מרכזית</span>
+        מה הנתבע טוען?
+      </div>
+      <div class="quote">
+        <div class="quote-text">"לסכום הסופי - ביקש ב"כ התובעת להוסיף שכ"ט עו"ד בסכום התחלתי של 100,000 ₪ דבר שהתקבל בהתנגדות מצד הנתבעת, שכן הדבר אינו סביר ואין כל פרופורציה להוספת תשלום של 100,000 ₪ או סכום של 60,000 ₪ (ב"כ התובעת היה מוכן לקבל)"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 8.8</div>
+      </div>
+      <div class="quote">
+        <div class="quote-text">"הנתבעת הביעה התנגדות נחרצת לסכומים הנ"ל ומנגד הייתה נכונה לתשלום שכ"ט עו"ד מקובל וסביר עליו יסכימו הצדדים לאחר עריכת התחשבנות סופית"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 8.8 (המשך)</div>
+      </div>
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>במילים פשוטות:</strong> הנתבע טוען שלא הגיע להסדר כי שכר הטרחה היה גבוה מדי. אבל זו רק אמתלה...
+      </div>
+    </div>
+
+    <!-- ב. ניתוח כרונולוגי -->
+    <div class="section-title">
+      <i class="ti ti-calendar-time"></i>
+      ב. ניתוח כרונולוגי - החוב קדם בשנים!
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <i class="ti ti-timeline"></i>
+        ציר הזמן מוכיח: שכ"ט זו אמתלה
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2016-2019</div>
+          <div class="timeline-content">איחורים מצטברים בתשלום לקופת הפנסיה - החוב מתחיל להיווצר</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">מאי 2021</div>
+          <div class="timeline-content">נפתח תיק הוצל"פ על 73,340 ₪ בגין שיקים שחזרו</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021-2022</div>
+          <div class="timeline-content">מו"מ מול משרד עו"ד - הנתבע לא משלם</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">אוקטובר 2022</div>
+          <div class="timeline-content">מכתב מנורה על חוב של 692,074 ₪</div>
+        </div>
+        <div class="timeline-item highlight">
+          <div class="timeline-year">14.6.2023</div>
+          <div class="timeline-content"><strong>פגישה ברמת גן - רק פה עולה נושא שכ"ט!</strong><br>עברו 4 שנים מתחילת החוב</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">אוגוסט 2023</div>
+          <div class="timeline-content">הוגשה התביעה - הנתבע עדיין לא שילם</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box danger">
+      <i class="ti ti-alert-triangle"></i>
+      <div>
+        <strong>המסקנה:</strong> החוב קיים מ-2019, נושא שכ"ט עלה רק ב-2023. <strong>4 שנים</strong> הנתבע לא שילם - לפני שבכלל דיברו על שכר טרחה!
+      </div>
+    </div>
+
+    <!-- ג. הפרכה -->
+    <div class="section-title">
+      <i class="ti ti-x"></i>
+      ג. הפרכת הטענה - גם אחרי הפחתה לא שילם
+    </div>
+
+    <div class="comparison">
+      <div class="comparison-item before">
+        <div class="comparison-label">דרישה התחלתית</div>
+        <div class="comparison-value">100,000 ₪</div>
+        <div class="comparison-note">הנתבע התנגד</div>
+      </div>
+      <div class="comparison-item after">
+        <div class="comparison-label">ההצעה הנוכחית</div>
+        <div class="comparison-value">40,000 ₪</div>
+        <div class="comparison-note">כולל מע"מ + פריסה ל-2 תשלומים</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge critical">קריטי</span>
+        הפחתה של 60% - ועדיין לא משלם!
+      </div>
+      <ul style="color: var(--text-secondary); padding-right: 20px; margin-top: 10px;">
+        <li style="margin-bottom: 8px;">הדרישה ירדה מ-100,000 ₪ ל-40,000 ₪ (הפחתה של 60%)</li>
+        <li style="margin-bottom: 8px;">הוצעה פריסה ל-2 תשלומים</li>
+        <li style="margin-bottom: 8px;">זה פחות מ-10% מסכום החוב (~567,000 ₪)</li>
+        <li><strong style="color: var(--danger);">התוצאה: הנתבע עדיין לא שילם שקל אחד!</strong></li>
+      </ul>
+    </div>
+
+    <div class="highlight-box info">
+      <i class="ti ti-gavel"></i>
+      <div>
+        <strong>חשוב:</strong> הנתבע יכול היה להגיש לבית הדין הודעה שמסכים לשלם את הקרן ולבקש התערבות בנושא שכ"ט - לא עשה זאת!
+      </div>
+    </div>
+
+    <!-- ד. ראיות מתצהיר הנתבע -->
+    <div class="section-title">
+      <i class="ti ti-file-check"></i>
+      ד. ראיות מתצהיר הנתבע עצמו
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge success">הודאה</span>
+        הודאה בחוב לפני מחלוקת שכ"ט
+      </div>
+      <div class="quote">
+        <div class="quote-text">"סילוק חוב הנמוך בהרבה מסכום התביעה... בו חייבת הנתבעת לקופת התובעת"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 1</div>
+      </div>
+      <p style="color: var(--text-secondary); margin-top: 10px;">הנתבע מודה בסעיף הראשון של תצהירו שהוא חייב - גם אם חולק על הסכום.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge success">הודאה</span>
+        הודאה שלא שילם גם כשלא הייתה מחלוקת
+      </div>
+      <div class="quote">
+        <div class="quote-text">"בתקופה הקורונה – נקלעה הנתבעת לקשיים כלכליים... תזרים המזומנים של הנתבעת נפגע"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 7.1</div>
+      </div>
+      <p style="color: var(--text-secondary); margin-top: 10px;">הנתבע מודה שהסיבה האמיתית לאי התשלום היא קשיים כלכליים - לא שכר טרחה.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="badge success">הודאה</span>
+        גם אחרי הפחתה משמעותית - לא שילם
+      </div>
+      <div class="quote">
+        <div class="quote-text">"הנתבעת הביעה התנגדות נחרצת לסכומים הנ"ל ומנגד הייתה נכונה לתשלום שכ"ט עו"ד מקובל וסביר"</div>
+        <div class="quote-source">תצהיר הנתבע, סעיף 8.8</div>
+      </div>
+      <p style="color: var(--text-secondary); margin-top: 10px;">אם הייתה "נכונה לתשלום סביר" - למה לא שילם כשהופחת ל-40,000 ₪? ברור שזו רק אמתלה.</p>
+    </div>
+
+    <!-- ה. טיעון משפטי -->
+    <div class="section-title">
+      <i class="ti ti-scale"></i>
+      ה. טיעון משפטי
+    </div>
+
+    <div class="argument-box">
+      <div class="title">
+        <i class="ti ti-check"></i>
+        שכר טרחה הוא חלק בלתי נפרד מההסדר
+      </div>
+      <div class="content">
+        לא ניתן להפריד בין החוב לבין שכר הטרחה. כל הסדר חוב כולל בהכרח הוצאות משפטיות. הנתבע לא יכול לדרוש הסדר ללא שכ"ט - זה לא ריאלי ולא הוגן.
+      </div>
+    </div>
+
+    <div class="argument-box">
+      <div class="title">
+        <i class="ti ti-check"></i>
+        נעשתה עבודה משפטית רבה
+      </div>
+      <div class="content">
+        <ul style="padding-right: 20px; margin-top: 8px;">
+          <li>פתיחת תיק הוצל"פ ב-2021</li>
+          <li>מו"מ ממושך מול הנתבע</li>
+          <li>הכנת תצהירי עדות ראשית</li>
+          <li>הופעות בבית הדין</li>
+          <li>טיפול בתצהירי ויתור</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="argument-box">
+      <div class="title">
+        <i class="ti ti-check"></i>
+        40,000 ₪ זה פחות מ-10% מהחוב
+      </div>
+      <div class="content">
+        סכום החוב הכולל: ~567,000 ₪. שכר הטרחה המוצע: 40,000 ₪ (כולל מע"מ). זה כ-7% בלבד - סכום סביר ומקובל לטיפול בתיק בהיקף כזה.
+      </div>
+    </div>
+
+    <!-- ו. שאלות חקירה ממוקדות -->
+    <div class="section-title">
+      <i class="ti ti-message-question"></i>
+      ו. שאלות חקירה ממוקדות
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">1</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">
+        החוב קיים מ-2019. נושא שכר הטרחה עלה רק ב-2023. 4 שנים לא שילמת - למה?
+      </div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהחוב קדם לסוגיית שכ"ט</p>
+        <p><strong>תשובה צפויה:</strong> יגיד שהיו קשיים כלכליים</p>
+        <p><strong>מעקב:</strong> "אז הסיבה היא קשיים כלכליים, לא שכר טרחה - נכון?"</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">2</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">
+        הופחת שכר הטרחה ל-40,000 ₪ עם פריסה - למה לא שילמת?
+      </div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שגם לאחר הפחתה משמעותית לא שילם</p>
+        <p><strong>תשובה צפויה:</strong> יגיד שזה עדיין הרבה / רצה פחות</p>
+        <p><strong>מעקב:</strong> "מה הסכום שהייתה מוכן לשלם? שילמת משהו?"</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">3</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">
+        אם באמת רצית להגיע להסדר - למה לא שילמת את הקרן ובקשת מבית הדין להכריע בשכ"ט?
+      </div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהנתבע לא עשה מאמץ אמיתי להסדר</p>
+        <p><strong>תשובה צפויה:</strong> לא ידע שאפשר / לא חשב על זה</p>
+        <p><strong>מעקב:</strong> "יש לך עו"ד, לא?"</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">4</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">
+        40,000 ₪ זה פחות מ-10% מהחוב. אתה חושב שזה לא סביר עבור טיפול של 3 שנים?
+      </div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהסכום סביר</p>
+        <p><strong>תשובה צפויה:</strong> יתחמק או יגיד שזה יחסי</p>
+        <p><strong>מעקב:</strong> "כמה שכר טרחה שילמת לעו"ד שלך בתיק הזה?"</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">5</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">
+        אתה כותב בסעיף 8.8 שהיית "נכון לתשלום שכ"ט סביר" - כמה זה סביר בעיניך?
+      </div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> לאלץ את הנתבע לנקוב בסכום</p>
+        <p><strong>תשובה צפויה:</strong> יתחמק או יגיד סכום נמוך מאוד</p>
+        <p><strong>מעקב:</strong> "הצעת סכום כזה לב"כ התובעת?"</p>
+      </div>
+    </div>
+
+    <!-- ז. ניסוח לסיכומים -->
+    <div class="section-title">
+      <i class="ti ti-writing"></i>
+      ז. ניסוח מוצע לסיכומים
+    </div>
+
+    <div class="summary-box">
+      <h3>
+        <i class="ti ti-file-text"></i>
+        טיעון מוצע
+      </h3>
+      <p>טענת הנתבע כי שכר הטרחה הוא שמנע הסדר - היא אמתלה שקופה שאין לקבלה. החוב נוצר עוד בשנת 2019, ואילו נושא שכר הטרחה עלה לראשונה רק בפגישה מיום 14.6.2023 - כלומר, במשך 4 שנים הנתבע לא שילם, עוד לפני שנושא שכר הטרחה בכלל הועלה.</p>
+      <p>יתרה מזאת, גם לאחר שהופחת שכר הטרחה באופן משמעותי מ-100,000 ₪ ל-40,000 ₪ בלבד (הפחתה של 60%), עם אפשרות פריסה ל-2 תשלומים - הנתבע עדיין לא שילם דבר. סכום זה מהווה פחות מ-10% מסכום החוב הכולל, והוא סביר ומידתי לעבודה המשפטית הרבה שנעשתה בתיק זה.</p>
+      <p>הנתבע עצמו מודה בתצהירו (סעיף 7.1) שהסיבה האמיתית לאי התשלום הייתה "קשיים כלכליים" ו"תזרים מזומנים נפגע" - ולא שכר טרחה. לכן, יש לדחות טענה זו מכל וכל.</p>
+    </div>
+
+    <!-- סיכום -->
+    <div class="highlight-box success">
+      <i class="ti ti-check"></i>
+      <div>
+        <strong>שורה תחתונה:</strong><br>
+        שכר הטרחה הוא תירוץ, לא סיבה. הנתבע לא שילם 4 שנים לפני שהנושא עלה, ולא שילם גם אחרי שהופחת ל-40K. הסיבה האמיתית היא קשיים כלכליים - כפי שהוא עצמו מודה.
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ניווט תחתון -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="witness-prep.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="one-pager.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
+
