@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ציר זמן השוואתי | הכנה לדיון - מנורה נ' אבו עוביד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-card: #333333;
+      --bg-card-hover: #3d3d3d;
+      --text-primary: #e8e8e8;
+      --text-secondary: #a0a0a0;
+      --text-muted: #6b6b6b;
+      --border-color: #404040;
+      --accent: #d4a574;
+      --accent-light: #e5c4a8;
+      --danger: #e57373;
+      --success: #81c784;
+      --warning: #ffb74d;
+      --info: #64b5f6;
+    }
+
+    body {
+      font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      direction: rtl;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 70px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 100;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .back-link:hover {
+      color: var(--text-primary);
+    }
+
+    .case-badge {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ===== SECTION TITLE ===== */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      margin-top: 32px;
+      padding-right: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title:first-child {
+      margin-top: 0;
+    }
+
+    .section-title i {
+      font-size: 1rem;
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .highlight-box i {
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .highlight-box.danger {
+      background: rgba(229, 115, 115, 0.1);
+      border: 1px solid rgba(229, 115, 115, 0.3);
+    }
+
+    .highlight-box.danger i {
+      color: var(--danger);
+    }
+
+    .highlight-box.info {
+      background: rgba(100, 181, 246, 0.1);
+      border: 1px solid rgba(100, 181, 246, 0.3);
+    }
+
+    .highlight-box.info i {
+      color: var(--info);
+    }
+
+    .highlight-box.warning {
+      background: rgba(255, 183, 77, 0.1);
+      border: 1px solid rgba(255, 183, 77, 0.3);
+    }
+
+    .highlight-box.warning i {
+      color: var(--warning);
+    }
+
+    /* ===== TIMELINE CARD ===== */
+    .timeline-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .timeline-card.critical {
+      border-right: 3px solid var(--danger);
+    }
+
+    .timeline-card.payment {
+      border-right: 3px solid var(--success);
+    }
+
+    .timeline-card.meeting {
+      border-right: 3px solid var(--info);
+    }
+
+    .timeline-card.conflict {
+      border-right: 3px solid var(--warning);
+    }
+
+    .card-date {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .date-badge {
+      background: var(--bg-secondary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    /* ===== COMPARISON GRID ===== */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .comparison-box {
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .comparison-box.plaintiff {
+      background: rgba(100, 181, 246, 0.1);
+      border: 1px solid rgba(100, 181, 246, 0.2);
+    }
+
+    .comparison-box.defendant {
+      background: rgba(255, 183, 77, 0.1);
+      border: 1px solid rgba(255, 183, 77, 0.2);
+    }
+
+    .comparison-label {
+      font-weight: 600;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .comparison-box.plaintiff .comparison-label {
+      color: var(--info);
+    }
+
+    .comparison-box.defendant .comparison-label {
+      color: var(--warning);
+    }
+
+    .comparison-text {
+      color: var(--text-secondary);
+    }
+
+    .comparison-source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ===== CONFLICT BOX ===== */
+    .conflict-box {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: rgba(229, 115, 115, 0.1);
+      border: 1px solid rgba(229, 115, 115, 0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .conflict-box i {
+      color: var(--danger);
+      flex-shrink: 0;
+    }
+
+    .conflict-text {
+      color: var(--danger);
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* ===== DELAY BADGE ===== */
+    .delay-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: rgba(229, 115, 115, 0.15);
+      color: var(--danger);
+      margin-right: 8px;
+    }
+
+    /* ===== BADGE ===== */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .badge.critical {
+      background: rgba(229, 115, 115, 0.15);
+      color: var(--danger);
+    }
+
+    .badge.important {
+      background: rgba(212, 165, 116, 0.15);
+      color: var(--accent);
+    }
+
+    /* ===== LEGEND ===== */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 16px 0;
+      padding: 12px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .legend-color.critical { background: var(--danger); }
+    .legend-color.payment { background: var(--success); }
+    .legend-color.meeting { background: var(--info); }
+    .legend-color.conflict { background: var(--warning); }
+
+    /* ===== MOBILE ADJUSTMENTS ===== */
+    @media (max-width: 600px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== BOTTOM NAVIGATION ===== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      height: 60px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .nav-btn i {
+      font-size: 1.25rem;
+    }
+
+    .nav-btn:hover,
+    .nav-btn:active {
+      color: var(--accent);
+    }
+
+    /* ===== DESKTOP ENHANCEMENTS ===== */
+    @media (min-width: 768px) {
+      .header h1 {
+        font-size: 1.75rem;
+      }
+
+      .container {
+        padding: 24px;
+      }
+
+      .timeline-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- כותרת עליונה -->
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1>ציר זמן השוואתי</h1>
+  </header>
+
+  <!-- תוכן ראשי -->
+  <main class="container">
+
+    <div class="highlight-box info">
+      <i class="ti ti-info-circle"></i>
+      <div>
+        <strong>מטרת המסמך:</strong> השוואה כרונולוגית בין גרסת התובעת לנתבעת. מדגיש סתירות, איחורים קריטיים ונקודות מפתח.
+      </div>
+    </div>
+
+    <!-- מקרא -->
+    <div class="legend">
+      <div class="legend-item">
+        <span class="legend-color critical"></span>
+        איחור קריטי
+      </div>
+      <div class="legend-item">
+        <span class="legend-color payment"></span>
+        תשלום/הסדר
+      </div>
+      <div class="legend-item">
+        <span class="legend-color meeting"></span>
+        פגישה/פנייה
+      </div>
+      <div class="legend-item">
+        <span class="legend-color conflict"></span>
+        סתירה
+      </div>
+    </div>
+
+    <!-- 2015-2016 -->
+    <div class="section-title">
+      <i class="ti ti-calendar"></i>
+      2015-2016: תחילת ההתקשרות
+    </div>
+
+    <div class="timeline-card">
+      <div class="card-date">
+        <span class="date-badge">2015</span>
+      </div>
+      <div class="card-title">תחילת ניהול קופת הפנסיה</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">הנתבעת מעסיקה עובדים שעבורם הועברו רשימות גביה</div>
+          <div class="comparison-source">סעיף 6</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"ניהלה אצל התובעת קופת פנסיה לעובדים... מאז שנת 2015"</div>
+          <div class="comparison-source">סעיף 6</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2016-2017: איחורים קריטיים -->
+    <div class="section-title">
+      <i class="ti ti-alert-triangle"></i>
+      2016-2017: איחורים קריטיים
+    </div>
+
+    <div class="timeline-card critical">
+      <div class="card-date">
+        <span class="date-badge">11/2016</span>
+        <span class="badge critical">איחור 7 חודשים!</span>
+      </div>
+      <div class="card-title">חודש עבודה 11/2016</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התשלומים הועברו בפועל רק ביום <strong>20.06.2017</strong></div>
+          <div class="comparison-source">סעיף 12</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">אין התייחסות ספציפית לתאריך זה</div>
+        </div>
+      </div>
+      <div class="conflict-box">
+        <i class="ti ti-alert-circle"></i>
+        <span class="conflict-text">איחור של 7 חודשים! התשלום היה צריך להתבצע עד 15.12.2016 לכל המאוחר.</span>
+      </div>
+    </div>
+
+    <div class="timeline-card critical">
+      <div class="card-date">
+        <span class="date-badge">01/2017</span>
+        <span class="badge critical">איחור 7 חודשים!</span>
+      </div>
+      <div class="card-title">חודש עבודה 01/2017</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התשלומים הועברו בפועל רק ביום <strong>20.08.2017</strong></div>
+          <div class="comparison-source">סעיף 12</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">אין התייחסות ספציפית</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card critical">
+      <div class="card-date">
+        <span class="date-badge">02/2017</span>
+        <span class="badge critical">איחור 6 חודשים!</span>
+      </div>
+      <div class="card-title">חודש עבודה 02/2017</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התשלומים הועברו בפועל רק ביום <strong>20.08.2017</strong></div>
+          <div class="comparison-source">סעיף 12</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">אין התייחסות ספציפית</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2019-2020: תקופת החוב -->
+    <div class="section-title">
+      <i class="ti ti-currency-shekel"></i>
+      2019-2020: תקופת החוב העיקרית
+    </div>
+
+    <div class="timeline-card conflict">
+      <div class="card-date">
+        <span class="date-badge">2019-2022</span>
+      </div>
+      <div class="card-title">תקופת החוב הנתבעת</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">לא שולמו מלוא דמי הגמולים לחודשים:<br>04-11/2019, 01/2020-02/2022, 06/2022-08/2022, 12/2022, 04/2023</div>
+          <div class="comparison-source">סעיף 10</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"בתקופה הקורונה – נקלעה הנתבעת לקשיים כלכליים... תזרים המזומנים נפגע"</div>
+          <div class="comparison-source">סעיף 7.1</div>
+        </div>
+      </div>
+      <div class="conflict-box">
+        <i class="ti ti-alert-circle"></i>
+        <span class="conflict-text">הנתבע מודה בקשיים אך לא מפריך את האיחורים! קשיים זו לא הגנה משפטית.</span>
+      </div>
+    </div>
+
+    <div class="timeline-card">
+      <div class="card-date">
+        <span class="date-badge">14.05.2020</span>
+      </div>
+      <div class="card-title">פתיחת תיק הוצל"פ</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">נפתח תיק הוצל"פ לגביית 4 המחאות בסך 17,981 ₪ כל אחת (מתוך 13 שלא כובדו)</div>
+          <div class="comparison-source">סעיף 26</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"פתחה התובעת ביום 6.5.2021 תיק הוצל"פ... קרן החוב עמדה ע"ס כ-73,340 ₪"</div>
+          <div class="comparison-source">סעיף 7.3</div>
+        </div>
+      </div>
+      <div class="conflict-box">
+        <i class="ti ti-alert-circle"></i>
+        <span class="conflict-text">סתירה בתאריכים: התובעת אומרת 14.05.2020, הנתבע אומר 6.5.2021. שנה הפרש!</span>
+      </div>
+    </div>
+
+    <!-- 2021: ניסיונות הסדר -->
+    <div class="section-title">
+      <i class="ti ti-messages"></i>
+      2021: ניסיונות הסדר
+    </div>
+
+    <div class="timeline-card meeting">
+      <div class="card-date">
+        <span class="date-badge">14.10.2021</span>
+      </div>
+      <div class="card-title">פנייה ראשונה להסדר</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">פנייה למשרד ב"כ התובעת במייל ובפקס</div>
+          <div class="comparison-source">נספח 1 לתצהיר הנתבע</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card meeting">
+      <div class="card-date">
+        <span class="date-badge">01.12.2021</span>
+      </div>
+      <div class="card-title">תשובת התובעת - 10 שיקים שחזרו</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"התקבלה תשובת התובעת - פירוט לגבי 10 שקים שחזרו"</div>
+          <div class="comparison-source">סעיף 7.9</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card meeting">
+      <div class="card-date">
+        <span class="date-badge">04.01.2022</span>
+      </div>
+      <div class="card-title">בקשה לפריסת חוב</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">ב"כ הנתבעת ביקש לדעת סכום סופי + פריסה ל-7,500 ₪ לחודש</div>
+          <div class="comparison-source">סעיף 7.10</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2022: איחורים נוספים ומו"מ -->
+    <div class="section-title">
+      <i class="ti ti-alert-triangle"></i>
+      2022: איחורים נוספים ומו"מ
+    </div>
+
+    <div class="timeline-card critical">
+      <div class="card-date">
+        <span class="date-badge">04/2022</span>
+        <span class="badge critical">איחור חודשיים</span>
+      </div>
+      <div class="card-title">חודש עבודה 04/2022</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התשלומים הועברו בפועל רק ביום <strong>19.06.2022</strong></div>
+          <div class="comparison-source">סעיף 12</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card meeting">
+      <div class="card-date">
+        <span class="date-badge">10.05.2022</span>
+      </div>
+      <div class="card-title">מכתב דרישה ממנורה</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">מנורה שלחה מכתב בגין חוב ע"ס כ-214,000 ₪</div>
+          <div class="comparison-source">סעיף 7.12</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card critical">
+      <div class="card-date">
+        <span class="date-badge">06/2022</span>
+        <span class="badge critical">איחור 3 חודשים</span>
+      </div>
+      <div class="card-title">חודש עבודה 06/2022</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התשלומים הועברו בפועל רק ביום <strong>15.09.2022</strong></div>
+          <div class="comparison-source">סעיף 12</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card conflict">
+      <div class="card-date">
+        <span class="date-badge">27.06.2022</span>
+      </div>
+      <div class="card-title">תלונה על התנהלות</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"הלין ב"כ הנתבעת על ההתנהלות והעיכובים הרבים במתן תשובות ענייניות מצד מנורה"</div>
+          <div class="comparison-source">סעיף 7.17</div>
+        </div>
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">הנתבעת לא שיתפה פעולה בהמצאת מלוא המסמכים הנדרשים</div>
+          <div class="comparison-source">סעיף 28</div>
+        </div>
+      </div>
+      <div class="conflict-box">
+        <i class="ti ti-alert-circle"></i>
+        <span class="conflict-text">כל צד מאשים את השני באי שיתוף פעולה. אבל: החוב קיים מ-2019 - הרבה לפני!</span>
+      </div>
+    </div>
+
+    <div class="timeline-card critical">
+      <div class="card-date">
+        <span class="date-badge">09/2022</span>
+        <span class="badge critical">איחור חודש</span>
+      </div>
+      <div class="card-title">חודש עבודה 09/2022</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התשלומים הועברו בפועל רק ביום <strong>27.10.2022</strong></div>
+          <div class="comparison-source">סעיף 12</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"ביום 27.10.2022 בוצע התשלום עבור חודש 9/2022"</div>
+          <div class="comparison-source">סעיף 7.21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card">
+      <div class="card-date">
+        <span class="date-badge">25.10.2022</span>
+      </div>
+      <div class="card-title">מכתב דרישה - חוב 692,074 ₪</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">התקבל מכתב מנורה על חוב ע"ס כ-692,074 ₪</div>
+          <div class="comparison-source">סעיף 7.22, נספח 14</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2023: הסלמה והגשת תביעה -->
+    <div class="section-title">
+      <i class="ti ti-gavel"></i>
+      2023: הסלמה והגשת תביעה
+    </div>
+
+    <div class="timeline-card conflict">
+      <div class="card-date">
+        <span class="date-badge">01/2023</span>
+      </div>
+      <div class="card-title">עיקולים על חשבונות הנתבעת</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"בצל המגעים בין הצדדים – התקבלו... עיקולי צד ג' על חשבונות הבנקים... ללא כל התראה"</div>
+          <div class="comparison-source">סעיף 8.1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card meeting">
+      <div class="card-date">
+        <span class="date-badge">14.06.2023</span>
+        <span class="badge important">פגישה מרכזית</span>
+      </div>
+      <div class="card-title">פגישה במשרדי מנורה</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">התקיימה פגישה בנוכחות הצדדים ובאי כוחם. הנתבעת לא שיתפה פעולה בהמצאת מסמכים</div>
+          <div class="comparison-source">סעיף 28</div>
+        </div>
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">הגיעו להסכמות עקרוניות: 15K/חודש שנה ראשונה, 22.5K שנייה, 30K שלישית. מחלוקת על שכ"ט 60-100K</div>
+          <div class="comparison-source">סעיפים 8.7, 8.8</div>
+        </div>
+      </div>
+      <div class="conflict-box">
+        <i class="ti ti-alert-circle"></i>
+        <span class="conflict-text">הנתבע טוען שסירב בגלל שכ"ט - אבל החוב קיים מ-2019, 4 שנים לפני שעלתה סוגיית שכ"ט!</span>
+      </div>
+    </div>
+
+    <div class="timeline-card meeting">
+      <div class="card-date">
+        <span class="date-badge">18.06.2023</span>
+      </div>
+      <div class="card-title">הנתבעת שולחת מסמכים</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"העבירה הנתבעת לידי התובעת... מייל סיכום לכל ההסכמות... וכן אסמכתאות ומסמכים"</div>
+          <div class="comparison-source">סעיף 8.9</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card conflict">
+      <div class="card-date">
+        <span class="date-badge">08/2023</span>
+      </div>
+      <div class="card-title">חידוש הליכי הוצל"פ</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"בחוסר תום לב ועל מנת להפעיל לחצים לא הוגנים על הנתבעת... חידשה התובעת הליכי גבייה"</div>
+          <div class="comparison-source">סעיף 8.14</div>
+        </div>
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">הנתבעת הפרה את ההסדר הדיוני והעבירה מידע חלקי בלבד</div>
+          <div class="comparison-source">סעיף 29</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card payment">
+      <div class="card-date">
+        <span class="date-badge">24.08.2023</span>
+      </div>
+      <div class="card-title">סילוק חוב תיק ההוצל"פ</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">"הנתבעת סילקה את מלוא החוב בתיק ההוצל"פ"</div>
+          <div class="comparison-source">סעיף 8.17</div>
+        </div>
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">"חוב זה טרם נפרע והתובעת ממשיכה בנקיטת הליכים"</div>
+          <div class="comparison-source">סעיף 26</div>
+        </div>
+      </div>
+      <div class="conflict-box">
+        <i class="ti ti-alert-circle"></i>
+        <span class="conflict-text">סתירה: האם נסגר תיק ההוצל"פ או לא? לברר בחקירה!</span>
+      </div>
+    </div>
+
+    <!-- 2024: הליכים משפטיים -->
+    <div class="section-title">
+      <i class="ti ti-scale"></i>
+      2024-2025: הליכים משפטיים
+    </div>
+
+    <div class="timeline-card payment">
+      <div class="card-date">
+        <span class="date-badge">14.07.2024</span>
+      </div>
+      <div class="card-title">תצהירי ויתור ראשונים</div>
+      <div class="comparison-grid">
+        <div class="comparison-box plaintiff">
+          <div class="comparison-label">
+            <i class="ti ti-building"></i>
+            תובעת
+          </div>
+          <div class="comparison-text">הנתבעת העבירה 4 תצהירי ויתור. החוב הנומינלי עודכן מ-705,244 ₪ ל-473,994.42 ₪</div>
+          <div class="comparison-source">סעיף 11</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-card payment">
+      <div class="card-date">
+        <span class="date-badge">2025</span>
+      </div>
+      <div class="card-title">תצהירי ויתור נוספים</div>
+      <div class="comparison-grid">
+        <div class="comparison-box defendant">
+          <div class="comparison-label">
+            <i class="ti ti-truck"></i>
+            נתבעת
+          </div>
+          <div class="comparison-text">הומצאו 8 תצהירי ויתור סה"כ (לפי סעיף 14)</div>
+          <div class="comparison-source">סעיף 14</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- סיכום -->
+    <div class="highlight-box danger">
+      <i class="ti ti-target"></i>
+      <div>
+        <strong>נקודות מפתח לדיון:</strong>
+        <ul style="margin-top: 8px; padding-right: 20px; color: var(--text-secondary);">
+          <li>איחורים מתועדים של 6-7 חודשים (2016-2017)</li>
+          <li>הנתבע מודה באיחורים ובקשיים כלכליים</li>
+          <li>טענת שכ"ט - רק ב-2023, החוב מ-2019</li>
+          <li>סתירות בעניין מצב תיק ההוצל"פ</li>
+          <li>שני הצדדים מאשימים זה את זה באי שיתוף פעולה</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-bulb"></i>
+      <div>
+        <strong>לזכור:</strong>
+        <p>גם אם היו בעיות תקשורת - החוב קיים והנתבע מודה בו. האיחורים מתועדים בתצהיר התובעת והנתבע לא מפריך אותם.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ניווט תחתון -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="admissions.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
+
