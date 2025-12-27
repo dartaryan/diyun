@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>שאלון חקירה נגדית | הכנה לדיון</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: #333333;
+  --bg-card-hover: #3d3d3d;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --text-muted: #6b6b6b;
+  --border-color: #404040;
+  --accent: #d4a574;
+  --accent-light: #e5c4a8;
+  --danger: #e57373;
+  --success: #81c784;
+  --warning: #ffb74d;
+  --info: #64b5f6;
+}
+
+body {
+  font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  direction: rtl;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  z-index: 100;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.back-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.case-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  margin-top: 28px;
+  padding-right: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+.section-title i {
+  font-size: 1.1rem;
+}
+
+/* ===== HIGHLIGHT BOXES ===== */
+.highlight-box {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.highlight-box i {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.highlight-box.warning {
+  background: rgba(255, 183, 77, 0.1);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+.highlight-box.warning i { color: var(--warning); }
+
+.highlight-box.info {
+  background: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+}
+.highlight-box.info i { color: var(--info); }
+
+/* ===== QUESTION CARDS ===== */
+.question-card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+  border-right: 3px solid var(--accent);
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.question-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--bg-primary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.question-text {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.question-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  background: var(--bg-secondary);
+  padding: 10px 12px;
+  border-radius: 6px;
+}
+
+.question-meta p {
+  margin-bottom: 6px;
+}
+
+.question-meta p:last-child {
+  margin-bottom: 0;
+}
+
+.question-meta strong {
+  color: var(--text-primary);
+}
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.badge.critical {
+  background: rgba(229, 115, 115, 0.15);
+  color: var(--danger);
+}
+
+.badge.important {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--accent);
+}
+
+.badge.setup {
+  background: rgba(100, 181, 246, 0.15);
+  color: var(--info);
+}
+
+.badge.closing {
+  background: rgba(129, 199, 132, 0.15);
+  color: var(--success);
+}
+
+/* ===== EXPANDABLE SECTIONS ===== */
+details {
+  background: var(--bg-card);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--border-color);
+}
+
+summary {
+  padding: 14px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-primary);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center no-repeat;
+  transition: transform 0.2s;
+}
+
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+details > div {
+  padding: 0 16px 16px;
+  color: var(--text-secondary);
+}
+
+/* ===== BOTTOM NAVIGATION ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 60px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.nav-btn i {
+  font-size: 1.25rem;
+}
+
+.nav-btn:hover, .nav-btn:active {
+  color: var(--accent);
+}
+
+/* ===== QUICK JUMP ===== */
+.quick-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.quick-jump a {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-color);
+}
+
+.quick-jump a:hover {
+  background: var(--bg-card);
+  color: var(--accent);
+}
+
+/* ===== DESKTOP ENHANCEMENTS ===== */
+@media (min-width: 768px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .container {
+    padding: 24px;
+  }
+  
+  .question-card {
+    padding: 20px;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1><i class="ti ti-message-question"></i> שאלון חקירה נגדית</h1>
+  </header>
+
+  <main class="container">
+    
+    <div class="highlight-box info">
+      <i class="ti ti-user"></i>
+      <div>
+        <strong>נחקר: מחמוד אבו עוביד</strong><br>
+        בעלים ומנכ"ל הנתבעת
+      </div>
+    </div>
+
+    <!-- Quick Jump Navigation -->
+    <div class="quick-jump">
+      <a href="#opening">פתיחה</a>
+      <a href="#debt">הודאה בחוב</a>
+      <a href="#delays">איחורים</a>
+      <a href="#negotiation">מו"מ</a>
+      <a href="#fees">שכ"ט</a>
+      <a href="#waivers">ויתורים</a>
+      <a href="#closing">סגירה</a>
+    </div>
+
+    <!-- ===== SECTION 1: OPENING ===== -->
+    <div class="section-title" id="opening">
+      <i class="ti ti-door-enter"></i>
+      חלק א': פתיחה - שאלות מבססות
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">1</span>
+        <span class="badge setup">מבססת</span>
+      </div>
+      <div class="question-text">מר אבו עוביד, אתה הבעלים והמנכ"ל של אבו עוביד להובלות ומסחר בע"מ, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> אישור זהות ותפקיד</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">2</span>
+        <span class="badge setup">מבססת</span>
+      </div>
+      <div class="question-text">את התצהיר שלפניי אתה כתבת וחתמת עליו, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> קשירה לתצהיר</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">3</span>
+        <span class="badge setup">מבססת</span>
+      </div>
+      <div class="question-text">החברה שלך מנהלת קופת פנסיה לעובדים אצל מנורה מבטחים מאז 2015, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> אישור קיום ההתקשרות</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 6</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">4</span>
+        <span class="badge setup">מבססת</span>
+      </div>
+      <div class="question-text">אתה מבין שהחובה להעביר דמי גמולים לקרן הפנסיה היא חובה שבחוק?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> בסיס לטענת חובה</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">5</span>
+        <span class="badge setup">מבססת</span>
+      </div>
+      <div class="question-text">אתה מבין שאם מאחרים בתשלום, יש ריבית פיגורים על פי החוק?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> בסיס לריבית פיגורים</p>
+        <p><strong>תשובה צפויה:</strong> כן, אבל...</p>
+        <p><strong>אם מכחיש:</strong> זו תקנה 11 לתקנות קופות הגמל - לא שאלת דעה</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 2: DEBT ADMISSION ===== -->
+    <div class="section-title" id="debt">
+      <i class="ti ti-currency-shekel"></i>
+      חלק ב': הודאה בקיום החוב
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-target"></i>
+      <div><strong>מטרה:</strong> לגרום להודאה מפורשת שיש חוב - הסכום שנוי במחלוקת, לא עצם החוב</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">6</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">בסעיף 1 לתצהירך אתה כותב על "סילוק חוב... בו חייבת הנתבעת" - אתה מודה שיש חוב, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> הודאה בקיום חוב</p>
+        <p><strong>תשובה צפויה:</strong> יש חוב, אבל לא בסכום הנטען</p>
+        <p><strong>אם מכחיש:</strong> תקריא לו את הציטוט: "סילוק חוב הנמוך בהרבה מסכום התביעה... בו חייבת הנתבעת"</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">7</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">אז אתה לא חולק על עצם קיום החוב - רק על הסכום?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> נעילת ההודאה</p>
+        <p><strong>תשובה צפויה:</strong> נכון</p>
+        <p><strong>חשוב:</strong> זו הודאת בעל דין!</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">8</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">בסעיף 7.2 אתה מודה שחלק מהשיקים שנתתם חזרו - נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> הודאה באי-תשלום</p>
+        <p><strong>תשובה צפויה:</strong> כן, בגלל קשיים</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 7.2</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">9</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">כמה שיקים חזרו בסך הכל?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> לכמת את ההפרה</p>
+        <p><strong>תשובה צפויה:</strong> לא זוכר / כ-10-13</p>
+        <p><strong>אם לא זוכר:</strong> לפי תצהיר התובעת - 13 שיקים, רק 4 הוגשו להוצל"פ</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">10</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">האם הגשת חישוב משלך שמראה מה לדעתך הסכום הנכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שאין לו בסיס לטענותיו</p>
+        <p><strong>תשובה צפויה:</strong> לא, כי התובעת לא נתנה נתונים</p>
+        <p><strong>מעקב:</strong> אבל אתה המעסיק - יש לך את כל הנתונים על העובדים שלך</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 3: DELAYS ===== -->
+    <div class="section-title" id="delays">
+      <i class="ti ti-clock-pause"></i>
+      חלק ג': הודאה באיחורים
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-target"></i>
+      <div><strong>מטרה:</strong> להפריך את טענת "טעות כנה" ולהראות דפוס של איחורים</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">11</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">בסעיף 5 לתצהירך אתה כותב "אי העברת הכספים במועד נבעה מטעות כנה" - אתה מודה שלא העברת במועד?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> הודאה באיחורים</p>
+        <p><strong>תשובה צפויה:</strong> כן, אבל טעות כנה</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 5</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">12</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">האם "טעות כנה" יכולה להימשך 4 שנים - מ-2019 עד 2023?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להפריך את טענת הטעות</p>
+        <p><strong>תשובה צפויה:</strong> היו קשיים, קורונה...</p>
+        <p><strong>מעקב:</strong> אבל הקורונה הייתה ב-2020 - מה עם 2019? ומה עם 2021-2023?</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">13</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">בסעיף 7.1 אתה מודה ש"נקלעה הנתבעת לקשיים כלכליים" - קשיים כלכליים זו לא טעות, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות סתירה בין "טעות" ל"קשיים"</p>
+        <p><strong>תשובה צפויה:</strong> נכון, היו קשיים</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 7.1</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">14</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">אם היו קשיים כלכליים - זו בחירה לא לשלם, לא טעות. מסכים?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להפוך את "הטעות" ל"בחירה מודעת"</p>
+        <p><strong>תשובה צפויה:</strong> לא היה לי כסף</p>
+        <p><strong>מעקב:</strong> אבל זה לא משנה את החובה לשלם ואת ריבית הפיגורים</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">15</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">לפי תצהיר התובעת, תשלום של 11/2016 התקבל רק ב-06/2017 - איחור של 7 חודשים. זו "טעות כנה"?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> דוגמה קונקרטית</p>
+        <p><strong>תשובה צפויה:</strong> לא זוכר / היו בעיות</p>
+        <p><strong>ייחוס:</strong> תצהיר תובעת סעיף 12</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">16</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">ותשלום של 01/2017 התקבל רק ב-08/2017 - שוב 7 חודשים איחור. עדיין טעות?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות דפוס</p>
+        <p><strong>תשובה צפויה:</strong> היו בעיות</p>
+        <p><strong>מעקב:</strong> אז זה לא טעות - זה דפוס מתמשך</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 4: NEGOTIATION ===== -->
+    <div class="section-title" id="negotiation">
+      <i class="ti ti-messages"></i>
+      חלק ד': ערעור טענת המו"מ
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-target"></i>
+      <div><strong>מטרה:</strong> להראות שהנתבע הוא שגרר רגליים, לא התובעת</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">17</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">אתה טוען שהתובעת לא שיתפה פעולה במו"מ - אבל ביום 14.6.23 התקיימה פגישה במשרדי מנורה מבטחים, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהיה מו"מ</p>
+        <p><strong>תשובה צפויה:</strong> כן, התקיימה פגישה</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 8.7</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">18</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">בפגישה הזו הגעתם להסכמות עקרוניות על פריסה ל-48 חודשים, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהתובעת הייתה גמישה</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 8.7</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">19</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">התובעת ביקשה ממך להמציא תצהירי ויתור מעובדים - כמה תצהירים המצאת?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהוא לא שיתף פעולה</p>
+        <p><strong>תשובה צפויה:</strong> 4 / 8</p>
+        <p><strong>מעקב:</strong> מתוך כמה עובדים בסך הכל? למה לא את כולם?</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">20</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">התובעת הפחיתה את החוב בעקבות התצהירים שהמצאת - מ-705,000 ל-408,000 ₪. מודע לזה?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהתובעת פעלה בתום לב</p>
+        <p><strong>תשובה צפויה:</strong> כן, אבל עדיין גבוה מדי</p>
+        <p><strong>מעקב:</strong> אז היא כן הפחיתה כשהמצאת ראיות - למה לא המצאת עוד?</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">21</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">בסעיף 29 לתצהיר התובעת נטען שהפרת הסדר דיוני ולא העברת מסמכים כנדרש. מה יש לך להגיד?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות חוסר שיתוף פעולה</p>
+        <p><strong>תשובה צפויה:</strong> העברתי מה שהיה לי</p>
+        <p><strong>מעקב:</strong> אבל אתה המעסיק - יש לך את כל התלושים והנתונים</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">22</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">גם היום, בתצהיר שלך, אתה לא מציג חישוב חלופי - למה?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שאין לו בסיס לטענותיו</p>
+        <p><strong>תשובה צפויה:</strong> כי התובעת לא נתנה נתונים</p>
+        <p><strong>מעקב:</strong> אבל הנתונים על העובדים שלך - זה אצלך</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 5: FEES ===== -->
+    <div class="section-title" id="fees">
+      <i class="ti ti-receipt-2"></i>
+      חלק ה': סוגיית שכר הטרחה
+    </div>
+
+    <div class="highlight-box warning">
+      <i class="ti ti-target"></i>
+      <div><strong>מטרה:</strong> להראות ששכ"ט הוא תירוץ - החוב קיים מ-2019, מחלוקת שכ"ט עלתה רק ב-2023</div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">23</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">החוב שלך קיים לפחות משנת 2019, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> בסיס כרונולוגי</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">24</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">סוגיית שכר הטרחה עלתה לראשונה בפגישה מיום 14.6.2023 - נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שהחוב קדם למחלוקת</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 8.8</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">25</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">אז 4 שנים - מ-2019 עד 2023 - לא שילמת בלי שום קשר לשכר טרחה, נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להפריך את טענת שכ"ט</p>
+        <p><strong>תשובה צפויה:</strong> היו סיבות אחרות</p>
+        <p><strong>מעקב:</strong> אז שכ"ט זו לא הסיבה שלא שילמת</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">26</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">דרישת שכר הטרחה ירדה מ-100,000 ₪ ל-40,000 ₪ כולל מע"מ. מודע לזה?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות גמישות התובעת</p>
+        <p><strong>תשובה צפויה:</strong> כן, אבל עדיין גבוה</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">27</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">הוצעה לך גם פריסה ל-2 תשלומים - נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות גמישות נוספת</p>
+        <p><strong>תשובה צפויה:</strong> כן</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">28</span>
+        <span class="badge critical">קריטית</span>
+      </div>
+      <div class="question-text">גם אחרי ההפחתה הזו - עדיין לא שילמת. למה?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות ששכ"ט הוא תירוץ</p>
+        <p><strong>תשובה צפויה:</strong> עדיין גבוה / לא הגיוני</p>
+        <p><strong>מעקב:</strong> אז זה לא שכ"ט - פשוט לא רוצה לשלם</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">29</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">אם באמת חלקת רק על שכ"ט - למה לא הגשת לבית הדין בקשה שיקבע את שכר הטרחה?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שלא פעל</p>
+        <p><strong>תשובה צפויה:</strong> לא ידעתי / לא חשבתי</p>
+        <p><strong>מעקב:</strong> יש לך עורך דין - הוא לא הציע?</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 6: WAIVERS ===== -->
+    <div class="section-title" id="waivers">
+      <i class="ti ti-file-certificate"></i>
+      חלק ו': תצהירי ויתור
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">30</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">כמה עובדים יש או היו בחברה שלך בתקופה הרלוונטית?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> בסיס להשוואה</p>
+        <p><strong>תשובה צפויה:</strong> מספר כלשהו</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">31</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">המצאת רק 8 תצהירי ויתור - מה עם שאר העובדים?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות שיש עוד חוב</p>
+        <p><strong>תשובה צפויה:</strong> מנסה להשיג</p>
+        <p><strong>מעקב:</strong> תקופת התביעה היא מ-2019 - היה לך שנים להשיג</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">32</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">בסעיף 14 לתצהירך אתה כותב "הס הביעו נכונות לחתום" - אז למה לא חתמו?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להראות חולשת הטענה</p>
+        <p><strong>תשובה צפויה:</strong> לא הסתדר להם</p>
+        <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 14</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">33</span>
+        <span class="badge important">חשובה</span>
+      </div>
+      <div class="question-text">גם אחרי הפחתת 300,000 ₪ בעקבות התצהירים - עדיין יש חוב של 408,000 ₪. מודע לזה?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להדגיש שעדיין יש חוב משמעותי</p>
+        <p><strong>תשובה צפויה:</strong> חולק על הסכום</p>
+        <p><strong>מעקב:</strong> אבל לא הגשת חישוב אחר</p>
+      </div>
+    </div>
+
+    <!-- ===== SECTION 7: CLOSING ===== -->
+    <div class="section-title" id="closing">
+      <i class="ti ti-flag-filled"></i>
+      חלק ז': סגירה
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">34</span>
+        <span class="badge closing">סגירה</span>
+      </div>
+      <div class="question-text">אתה מודה שיש חוב - רק חולק על הסכום. נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> נעילת ההודאה</p>
+        <p><strong>תשובה צפויה:</strong> נכון</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">35</span>
+        <span class="badge closing">סגירה</span>
+      </div>
+      <div class="question-text">אתה מודה שהיו איחורים בתשלום - רק חולק על הסיבה. נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> נעילת הודאה באיחורים</p>
+        <p><strong>תשובה צפויה:</strong> נכון</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">36</span>
+        <span class="badge closing">סגירה</span>
+      </div>
+      <div class="question-text">גם היום, אחרי כל ההליך הזה - עדיין לא שילמת את החוב. נכון?</div>
+      <div class="question-meta">
+        <p><strong>מטרה:</strong> להדגיש שהחוב קיים</p>
+        <p><strong>תשובה צפויה:</strong> מחכה להכרעת בית הדין</p>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="question-header">
+        <span class="question-number">37</span>
+        <span class="badge closing">סגירה</span>
+      </div>
+      <div class="question-text">אין לי שאלות נוספות.</div>
+      <div class="question-meta">
+        <p><strong>הערה:</strong> לסיים בנימה חזקה - אחרי הודאות ברורות</p>
+      </div>
+    </div>
+
+    <!-- ADDITIONAL QUESTIONS -->
+    <details>
+      <summary>
+        <span>שאלות רזרביות - אם יש זמן</span>
+      </summary>
+      <div>
+        <div class="question-card">
+          <div class="question-header">
+            <span class="question-number">+1</span>
+          </div>
+          <div class="question-text">בסעיף 9.4 אתה כותב "ככל ויתברר כי ישנם סכומים שלא הועברו" - אז אתה מודה שייתכן שלא העברת?</div>
+          <div class="question-meta">
+            <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 9.4</p>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-header">
+            <span class="question-number">+2</span>
+          </div>
+          <div class="question-text">בסעיף 15.2 אתה מודה ש"חלק מהשקים חזרו בצל הקשיים" - אז לא טעות, אלא חוסר יכולת לשלם?</div>
+          <div class="question-meta">
+            <p><strong>ייחוס:</strong> תצהיר נתבע סעיף 15.2</p>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <div class="question-header">
+            <span class="question-number">+3</span>
+          </div>
+          <div class="question-text">אתה מלין על "סחבת" מצד התובעת - אבל התיק הזה מתנהל כבר שנתיים. מי ביקש דחיות?</div>
+        </div>
+      </div>
+    </details>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="admissions.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="witness-prep.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
