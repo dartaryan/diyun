@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הכנת העדה | הכנה לדיון - מנורה נ' אבו עוביד</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-card: #333333;
+  --bg-card-hover: #3d3d3d;
+  --text-primary: #e8e8e8;
+  --text-secondary: #a0a0a0;
+  --text-muted: #6b6b6b;
+  --border-color: #404040;
+  --accent: #d4a574;
+  --accent-light: #e5c4a8;
+  --danger: #e57373;
+  --success: #81c784;
+  --warning: #ffb74d;
+  --info: #64b5f6;
+}
+
+body {
+  font-family: 'Assistant', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  direction: rtl;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  z-index: 100;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.back-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.back-link:hover {
+  color: var(--text-primary);
+}
+
+.case-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.header-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-header i {
+  color: var(--text-muted);
+}
+
+/* ===== SECTION TITLE ===== */
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  margin-top: 24px;
+  padding-right: 4px;
+}
+
+.section-title:first-child {
+  margin-top: 0;
+}
+
+/* ===== QUOTE BOX ===== */
+.quote {
+  background: var(--bg-secondary);
+  border-right: 3px solid var(--accent);
+  padding: 12px 16px;
+  margin: 12px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.quote-text {
+  font-style: italic;
+  color: var(--text-primary);
+}
+
+.quote-source {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-style: normal;
+}
+
+/* ===== HIGHLIGHT BOXES ===== */
+.highlight-box {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 12px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.highlight-box i {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.highlight-box.success {
+  background: rgba(129, 199, 132, 0.1);
+  border: 1px solid rgba(129, 199, 132, 0.3);
+}
+.highlight-box.success i { color: var(--success); }
+
+.highlight-box.warning {
+  background: rgba(255, 183, 77, 0.1);
+  border: 1px solid rgba(255, 183, 77, 0.3);
+}
+.highlight-box.warning i { color: var(--warning); }
+
+.highlight-box.danger {
+  background: rgba(229, 115, 115, 0.1);
+  border: 1px solid rgba(229, 115, 115, 0.3);
+}
+.highlight-box.danger i { color: var(--danger); }
+
+.highlight-box.info {
+  background: rgba(100, 181, 246, 0.1);
+  border: 1px solid rgba(100, 181, 246, 0.3);
+}
+.highlight-box.info i { color: var(--info); }
+
+/* ===== TOPIC CARD ===== */
+.topic-card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.topic-header {
+  padding: 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.topic-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: var(--bg-primary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.topic-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.topic-content {
+  padding: 16px;
+}
+
+.topic-section {
+  margin-bottom: 16px;
+}
+
+.topic-section:last-child {
+  margin-bottom: 0;
+}
+
+.topic-section-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topic-section-title i {
+  font-size: 1rem;
+}
+
+/* ===== QUESTION LIST ===== */
+.question-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.question-list li {
+  padding: 10px 12px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-right: 28px;
+}
+
+.question-list li::before {
+  content: '?';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--info);
+  font-weight: 700;
+}
+
+/* ===== ANSWER LIST ===== */
+.answer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.answer-list li {
+  padding: 10px 12px;
+  background: rgba(129, 199, 132, 0.08);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  position: relative;
+  padding-right: 28px;
+  border-right: 2px solid var(--success);
+}
+
+.answer-list li::before {
+  content: '\2713';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* ===== DONT SAY LIST ===== */
+.dontsay-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dontsay-list li {
+  padding: 10px 12px;
+  background: rgba(229, 115, 115, 0.08);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-right: 28px;
+  border-right: 2px solid var(--danger);
+}
+
+.dontsay-list li::before {
+  content: '\2717';
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* ===== DOCUMENTS LIST ===== */
+.docs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.docs-list li {
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.docs-list li i {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.badge.critical {
+  background: rgba(229, 115, 115, 0.15);
+  color: var(--danger);
+}
+
+.badge.important {
+  background: rgba(212, 165, 116, 0.15);
+  color: var(--accent);
+}
+
+/* ===== INFO CARD ===== */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: var(--text-muted);
+}
+
+.info-value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ===== QUICK JUMP ===== */
+.quick-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.quick-jump a {
+  padding: 8px 14px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.quick-jump a:hover {
+  background: var(--bg-card);
+  color: var(--accent);
+}
+
+/* ===== BOTTOM NAVIGATION ===== */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 60px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.nav-btn i {
+  font-size: 1.25rem;
+}
+
+.nav-btn:hover, .nav-btn:active {
+  color: var(--accent);
+}
+
+/* ===== DESKTOP ENHANCEMENTS ===== */
+@media (min-width: 768px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .container {
+    padding: 24px;
+  }
+  
+  .topic-content {
+    padding: 20px;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .header, .bottom-nav, .quick-jump {
+    display: none;
+  }
+  
+  body {
+    padding: 0;
+    background: white;
+    color: black;
+  }
+  
+  .topic-card {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <a href="index.html" class="back-link">
+        <i class="ti ti-chevron-right"></i>
+        חזרה לתפריט
+      </a>
+      <span class="case-badge">ק"ג 51088-08-23</span>
+    </div>
+    <h1>הכנת העדה</h1>
+    <p class="header-subtitle">רעיה מרגוליס - הכנה לחקירה נגדית</p>
+  </header>
+
+  <main class="container">
+    
+    <!-- פרטי העדה -->
+    <div class="card">
+      <div class="card-header">
+        <i class="ti ti-user-check"></i>
+        פרטי העדה
+      </div>
+      <div class="info-row">
+        <span class="info-label">שם העדה</span>
+        <span class="info-value">רעיה מרגוליס</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">תפקיד</span>
+        <span class="info-value">מחלקת גביית חובות - מנורה מבטחים</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">התצהיר נחתם ע"י</span>
+        <span class="info-value">רוני איקמן (מנהל המחלקה)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">ב"כ הנתבעת</span>
+        <span class="info-value">עו"ד מוחמד עומרי</span>
+      </div>
+    </div>
+
+    <!-- הערה חשובה -->
+    <div class="highlight-box warning">
+      <i class="ti ti-alert-triangle"></i>
+      <div>
+        <strong>שים לב:</strong> הנתבע טוען לסחבת ואי-שיתוף פעולה מצד התובעת. יש להכין את העדה לשאלות בנושאים אלה.
+      </div>
+    </div>
+
+    <!-- ניווט מהיר -->
+    <div class="section-title">ניווט מהיר</div>
+    <div class="quick-jump">
+      <a href="#topic1">סחבת ואי-מענה</a>
+      <a href="#topic2">תחלופת עובדים</a>
+      <a href="#topic3">חישוב הריבית</a>
+      <a href="#topic4">שכר טרחה</a>
+      <a href="#topic5">הפחתת סכומים</a>
+    </div>
+
+    <!-- נושא 1: סחבת ואי-מענה לפניות -->
+    <div class="topic-card" id="topic1">
+      <div class="topic-header">
+        <span class="topic-number">1</span>
+        <span class="topic-title">סחבת ואי-מענה לפניות</span>
+        <span class="badge critical">קריטי</span>
+      </div>
+      <div class="topic-content">
+        
+        <!-- טענת הנתבע -->
+        <div class="quote">
+          <div class="quote-text">"פניות רבות שנעשו באמצעות שיחות טלפוניות לא זכו למענה... העיכובים הרבים במתן תשובות ענייניות מצד מנורה מבטחים"</div>
+          <div class="quote-source">תצהיר הנתבע, סעיפים 7.8, 7.17</div>
+        </div>
+        
+        <!-- שאלות צפויות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-message-question"></i>
+            שאלות צפויות מהנתבע
+          </div>
+          <ul class="question-list">
+            <li>למה לא ענו לפניות הנתבעת?</li>
+            <li>האם נכון שלא התקבלה תשובה סופית במשך חודשים?</li>
+            <li>למה בכל פעם היה נציג אחר שמטפל?</li>
+            <li>האם נכון שהייתה סחבת מצד מנורה?</li>
+            <li>למה לא נערכו חישובים סופיים כמובטח?</li>
+          </ul>
+        </div>
+
+        <!-- תשובות מומלצות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-check"></i>
+            תשובות מומלצות
+          </div>
+          <ul class="answer-list">
+            <li>התובעת קיימה שיחות רבות עם הנתבעת, הן ישירות והן באמצעות באי כוח הצדדים (סעיף 28 לתצהיר)</li>
+            <li>אף התקיימה פגישה במשרדי התובעת ב-14.6.23 בנוכחות כל הצדדים</li>
+            <li>הנתבעת היא זו שלא שיתפה פעולה - לא העבירה מסמכים נדרשים</li>
+            <li>הנתבעת הפרה את ההסדר הדיוני - העבירה מידע חלקי בלבד (סעיף 29)</li>
+            <li>רק 4 תצהירי ויתור מתוך מה שהתחייבה הועברו</li>
+          </ul>
+        </div>
+
+        <!-- מה לא לומר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-x"></i>
+            מה לא לומר
+          </div>
+          <ul class="dontsay-list">
+            <li>לא להכיר בעיכובים ספציפיים מצד מנורה</li>
+            <li>לא להאשים עובדים ספציפיים</li>
+            <li>לא לומר "אני לא יודעת" - תמיד להפנות לגורם המטפל</li>
+            <li>לא להתנצל - זה מרמז על אשמה</li>
+          </ul>
+        </div>
+
+        <!-- מסמכים להכיר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-file-text"></i>
+            מסמכים להכיר
+          </div>
+          <ul class="docs-list">
+            <li><i class="ti ti-mail"></i> נספח 5 לתצהיר התובעת - העתקים מפניות לנתבעת</li>
+            <li><i class="ti ti-calendar"></i> תיעוד הפגישה מ-14.6.23</li>
+            <li><i class="ti ti-file-check"></i> ההסדר הדיוני שהוגש לתיק</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- נושא 2: תחלופת עובדים -->
+    <div class="topic-card" id="topic2">
+      <div class="topic-header">
+        <span class="topic-number">2</span>
+        <span class="topic-title">תחלופת עובדים (גב' אלה)</span>
+        <span class="badge important">חשוב</span>
+      </div>
+      <div class="topic-content">
+        
+        <!-- טענת הנתבע -->
+        <div class="quote">
+          <div class="quote-text">"גב' אלה טטבוסוב... אשר עזבה את מקום עבודתה לפני תקופה מה... ההליכים חודשו לאחר קליטת עובדת חדשה בשם 'סיגל'"</div>
+          <div class="quote-source">תצהיר הנתבע, סעיפים 7.5, 8.2</div>
+        </div>
+        
+        <!-- שאלות צפויות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-message-question"></i>
+            שאלות צפויות מהנתבע
+          </div>
+          <ul class="question-list">
+            <li>מי היא גב' אלה ולמה עזבה?</li>
+            <li>האם התחלפות העובדים גרמה לבעיות?</li>
+            <li>למה העובדת החדשה לא הייתה מעודכנת במו"מ?</li>
+            <li>האם יש תיעוד למסירה סדורה בין העובדות?</li>
+          </ul>
+        </div>
+
+        <!-- תשובות מומלצות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-check"></i>
+            תשובות מומלצות
+          </div>
+          <ul class="answer-list">
+            <li>גב' אלה עבדה במשרד ב"כ התובעת, לא במנורה עצמה</li>
+            <li>מנורה מבטחים היא גוף מקצועי עם נהלים סדורים</li>
+            <li>כל הפניות והתשובות מתועדות במערכת</li>
+            <li>החוב לא נוצר בגלל תחלופת עובדים - החוב קיים מ-2019</li>
+            <li>גם כשהיו שינויי כוח אדם, התובעת המשיכה לפעול לגביית החוב</li>
+          </ul>
+        </div>
+
+        <!-- מה לא לומר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-x"></i>
+            מה לא לומר
+          </div>
+          <ul class="dontsay-list">
+            <li>לא להכיר בכך שהתחלפות עובדים גרמה לבעיות</li>
+            <li>לא לדבר על עניינים פנימיים של משרד ב"כ התובעת</li>
+            <li>לא לקשר בין עזיבת עובדים לעיכובים</li>
+          </ul>
+        </div>
+
+        <!-- מסמכים להכיר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-file-text"></i>
+            מסמכים להכיר
+          </div>
+          <ul class="docs-list">
+            <li><i class="ti ti-database"></i> כרטסת חו"ז הנתבעת (נספח 2)</li>
+            <li><i class="ti ti-mail"></i> תיעוד ההתכתבויות עם הנתבעת</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- נושא 3: חישוב הריבית -->
+    <div class="topic-card" id="topic3">
+      <div class="topic-header">
+        <span class="topic-number">3</span>
+        <span class="topic-title">חישוב הריבית</span>
+        <span class="badge critical">קריטי</span>
+      </div>
+      <div class="topic-content">
+        
+        <!-- טענת הנתבע -->
+        <div class="quote">
+          <div class="quote-text">"ריבית הפיגורים הנתבעת... איננה נכונה... לתובעת חלק נכבד ביצירת ריבית הפיגורים"</div>
+          <div class="quote-source">תצהיר הנתבע, סעיף 15.2</div>
+        </div>
+        
+        <!-- שאלות צפויות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-message-question"></i>
+            שאלות צפויות מהנתבע
+          </div>
+          <ul class="question-list">
+            <li>איך מחושבת הריבית?</li>
+            <li>למה הריבית כל כך גבוהה?</li>
+            <li>האם יש שיקול דעת בגביית ריבית?</li>
+            <li>למה לא הקפאתם את הריבית בזמן המו"מ?</li>
+            <li>האם הריבית "ריבית דריבית"?</li>
+          </ul>
+        </div>
+
+        <!-- תשובות מומלצות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-check"></i>
+            תשובות מומלצות
+          </div>
+          <ul class="answer-list">
+            <li>הריבית מחושבת לפי תקנה 11 לתקנות קופות הגמל - זו חובה חוקית</li>
+            <li>שיעור הריבית נקבע ע"י החשב הכללי של מדינת ישראל</li>
+            <li>לתובעת אין שיקול דעת - חייבים לגבות (סעיף 19, 33 לתצהיר)</li>
+            <li>אי-גביית ריבית חושפת את התובעת לעיצומים מרשות שוק ההון (סעיף 32)</li>
+            <li>תחשיב ריבית ידנית מפורט צורף כנספח 3</li>
+          </ul>
+        </div>
+
+        <!-- מה לא לומר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-x"></i>
+            מה לא לומר
+          </div>
+          <ul class="dontsay-list">
+            <li>לא לומר שאפשר לוותר על הריבית</li>
+            <li>לא להציע הנחות או פשרות על הריבית</li>
+            <li>לא לטעון שהחישוב מדויק אם לא בדקת</li>
+          </ul>
+        </div>
+
+        <!-- מסמכים להכיר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-file-text"></i>
+            מסמכים להכיר
+          </div>
+          <ul class="docs-list">
+            <li><i class="ti ti-calculator"></i> נספח 3 - תחשיב ריבית ידנית</li>
+            <li><i class="ti ti-scale"></i> תקנה 10, 11 לתקנות קופות הגמל</li>
+            <li><i class="ti ti-file-certificate"></i> נספח 6 - עמדת המדינה בתיק דומה</li>
+            <li><i class="ti ti-book"></i> חוזר גמל 4/2000 (נספח 7)</li>
+          </ul>
+        </div>
+
+        <!-- הדגשה -->
+        <div class="highlight-box info">
+          <i class="ti ti-info-circle"></i>
+          <div>
+            <strong>נקודה מרכזית:</strong> ריבית הפיגורים היא 158,976.88 ₪. זו חובה חוקית ולא שיקול דעת של התובעת.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- נושא 4: שכר טרחה -->
+    <div class="topic-card" id="topic4">
+      <div class="topic-header">
+        <span class="topic-number">4</span>
+        <span class="topic-title">שכר טרחה</span>
+        <span class="badge important">חשוב</span>
+      </div>
+      <div class="topic-content">
+        
+        <!-- טענת הנתבע -->
+        <div class="quote">
+          <div class="quote-text">"ביקש ב"כ התובעת להוסיף שכ"ט עו"ד בסכום התחלתי של 100,000 ₪... אין כל פרופורציה"</div>
+          <div class="quote-source">תצהיר הנתבע, סעיף 8.8</div>
+        </div>
+        
+        <!-- שאלות צפויות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-message-question"></i>
+            שאלות צפויות מהנתבע
+          </div>
+          <ul class="question-list">
+            <li>האם נכון שדרשתם 100,000 ₪ שכ"ט?</li>
+            <li>למה שכ"ט כל כך גבוה?</li>
+            <li>האם הסכום הזה סביר?</li>
+            <li>האם זו הסיבה שלא הגעתם להסכם?</li>
+          </ul>
+        </div>
+
+        <!-- תשובות מומלצות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-check"></i>
+            תשובות מומלצות
+          </div>
+          <ul class="answer-list">
+            <li>שכר הטרחה הוא עניין בין התובעת לבא כוחה - לא קשור לחוב</li>
+            <li>החוב קיים מ-2019, הרבה לפני שעלתה סוגיית שכר הטרחה (2023)</li>
+            <li>גם אחרי שהופחת שכ"ט ל-40,000 ₪ - הנתבע עדיין לא שילם</li>
+            <li>שכ"ט אינו סיבה לאי-תשלום החוב לקופת הפנסיה</li>
+            <li>העובדים העמיתים הם הניזוקים - לא ב"כ התובעת</li>
+          </ul>
+        </div>
+
+        <!-- מה לא לומר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-x"></i>
+            מה לא לומר
+          </div>
+          <ul class="dontsay-list">
+            <li>לא להתייחס לסכום ספציפי של שכ"ט</li>
+            <li>לא להסכים שזו הסיבה לאי-ההסכם</li>
+            <li>לא לדון בהסכמים פנימיים עם ב"כ</li>
+          </ul>
+        </div>
+
+        <!-- הדגשה -->
+        <div class="highlight-box success">
+          <i class="ti ti-bulb"></i>
+          <div>
+            <strong>טיעון מרכזי:</strong> טענת שכ"ט היא אמתלה. החוב נוצר ב-2019, סוגיית שכ"ט עלתה רק ב-2023. ארבע שנים לא שילמו!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- נושא 5: הפחתת הסכומים -->
+    <div class="topic-card" id="topic5">
+      <div class="topic-header">
+        <span class="topic-number">5</span>
+        <span class="topic-title">הפחתת הסכומים (תצהירי ויתור)</span>
+        <span class="badge important">חשוב</span>
+      </div>
+      <div class="topic-content">
+        
+        <!-- טענת הנתבע -->
+        <div class="quote">
+          <div class="quote-text">"חלק מהעובדים כבר פרשו וקיבלו את הכספים המגיעים להם... עובדים שהביעו נכונות לחתום על כתבי וויתור"</div>
+          <div class="quote-source">תצהיר הנתבע, סעיף 3</div>
+        </div>
+        
+        <!-- שאלות צפויות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-message-question"></i>
+            שאלות צפויות מהנתבע
+          </div>
+          <ul class="question-list">
+            <li>למה לא הפחתתם את החוב קודם?</li>
+            <li>כמה תצהירי ויתור קיבלתם?</li>
+            <li>למה לא התחשבתם בעובדים שפרשו?</li>
+            <li>האם עדכנתם את סכום החוב?</li>
+          </ul>
+        </div>
+
+        <!-- תשובות מומלצות -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-check"></i>
+            תשובות מומלצות
+          </div>
+          <ul class="answer-list">
+            <li>קיבלנו תצהירי ויתור והפחתנו את החוב בהתאם</li>
+            <li>החוב הנומינלי הופחת מ-705,244 ₪ ל-408,000 ₪ (סעיף 11)</li>
+            <li>קלטנו 4 תצהירי ויתור שהועברו ב-14/07/2024</li>
+            <li>הנתבעת התחייבה בהסדר הדיוני להעביר עוד תצהירים - ולא עשתה זאת (סעיף 29)</li>
+            <li>כל תשלום שהתקבל - קוזז מהחוב, כפי שניתן לראות בכרטסת (נספח 2)</li>
+          </ul>
+        </div>
+
+        <!-- מה לא לומר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-x"></i>
+            מה לא לומר
+          </div>
+          <ul class="dontsay-list">
+            <li>לא להתחייב להפחתות נוספות</li>
+            <li>לא לומר שיש עוד תצהירים שלא נבדקו</li>
+            <li>לא להסכים שהסכומים "מופרזים"</li>
+          </ul>
+        </div>
+
+        <!-- מסמכים להכיר -->
+        <div class="topic-section">
+          <div class="topic-section-title">
+            <i class="ti ti-file-text"></i>
+            מסמכים להכיר
+          </div>
+          <ul class="docs-list">
+            <li><i class="ti ti-list-check"></i> רשימת עמיתים (נספח 1)</li>
+            <li><i class="ti ti-database"></i> כרטסת חו"ז הנתבעת (נספח 2)</li>
+            <li><i class="ti ti-file-minus"></i> דוח העדר הפקדה (נספח 4)</li>
+            <li><i class="ti ti-file-check"></i> ההסדר הדיוני</li>
+          </ul>
+        </div>
+
+        <!-- טבלת הפחתות -->
+        <div class="highlight-box info">
+          <i class="ti ti-arrow-down"></i>
+          <div>
+            <strong>הפחתות שבוצעו:</strong><br>
+            חוב מקורי: 705,244 ₪<br>
+            לאחר 4 תצהירי ויתור: 408,000 ₪<br>
+            <strong>הפחתה של כ-297,000 ₪!</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- סיכום והנחיות כלליות -->
+    <div class="section-title">הנחיות כלליות לעדות</div>
+    
+    <div class="card">
+      <div class="card-header">
+        <i class="ti ti-target"></i>
+        עקרונות מנחים
+      </div>
+      <div class="highlight-box success">
+        <i class="ti ti-check"></i>
+        <div>
+          <strong>תמיד להדגיש:</strong>
+          <ul style="margin-top: 8px; padding-right: 16px;">
+            <li>הנתבע מודה בקיום חוב</li>
+            <li>הנתבע מודה באיחורים</li>
+            <li>ריבית פיגורים היא חובה חוקית</li>
+            <li>הנתבע הפר את ההסדר הדיוני</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="highlight-box danger">
+        <i class="ti ti-x"></i>
+        <div>
+          <strong>תמיד להימנע מ:</strong>
+          <ul style="margin-top: 8px; padding-right: 16px;">
+            <li>התנצלויות או הודאות באשמה</li>
+            <li>ספקולציות על דברים שאינך יודעת</li>
+            <li>הבטחות להפחתות או הנחות</li>
+            <li>ביקורת על עובדים ספציפיים</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <i class="ti ti-clipboard-list"></i>
+        צ'קליסט לפני הדיון
+      </div>
+      <ul class="docs-list">
+        <li><i class="ti ti-square"></i> לקרוא את תצהיר התובעת (רוני איקמן)</li>
+        <li><i class="ti ti-square"></i> לקרוא את תצהיר הנתבע</li>
+        <li><i class="ti ti-square"></i> להכיר את הנספחים - במיוחד 1-7</li>
+        <li><i class="ti ti-square"></i> לזכור מספרי סעיפים קריטיים: 10, 11, 12, 28, 29</li>
+        <li><i class="ti ti-square"></i> להכיר את תקנות 10, 11 לתקנות קופות הגמל</li>
+        <li><i class="ti ti-square"></i> לשנן: חוב 408K + ריבית 159K = כ-567K</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="index.html" class="nav-btn">
+      <i class="ti ti-home"></i>
+      ראשי
+    </a>
+    <a href="cross-exam.html" class="nav-btn">
+      <i class="ti ti-chevron-right"></i>
+      קודם
+    </a>
+    <a href="fee-analysis.html" class="nav-btn">
+      <i class="ti ti-chevron-left"></i>
+      הבא
+    </a>
+  </nav>
+</body>
+</html>
+
